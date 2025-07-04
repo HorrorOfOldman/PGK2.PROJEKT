@@ -1,0 +1,189 @@
+[gd_scene load_steps=22 format=3 uid="uid://yslc67x7uvs6"]
+
+[ext_resource type="Texture2D" uid="uid://caewxyuijjft3" path="res://SrodowiskaWalki/Wrogowie/ciosma.png" id="1_b2fwj"]
+[ext_resource type="Script" uid="uid://bgauwi6fqrn1a" path="res://Skrypty/fog.gd" id="1_usrx6"]
+[ext_resource type="Texture2D" uid="uid://de5vercx5muol" path="res://SrodowiskaWalki/Tła/lawki.jpg" id="2_3vsom"]
+[ext_resource type="Texture2D" uid="uid://bx0th5an1jhn1" path="res://SrodowiskaWalki/Wrogowie/AdmArkobot.png" id="3_5uufe"]
+[ext_resource type="Texture2D" uid="uid://b0bd0j0f55o0g" path="res://Assety/coś/gfhhgf-Photoroom.png" id="5_oitf7"]
+[ext_resource type="Script" uid="uid://crud270sbqds5" path="res://Skrypty/menu_animation.gd" id="6_63lvr"]
+
+[sub_resource type="Environment" id="Environment_usrx6"]
+fog_enabled = true
+fog_mode = 1
+fog_light_energy = 0.45
+fog_sun_scatter = 0.12
+fog_density = 1.367
+fog_sky_affect = 0.695
+fog_height = 3.15
+fog_height_density = 0.0305
+fog_depth_curve = 0.732043
+volumetric_fog_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_5uufe"]
+
+[sub_resource type="Compositor" id="Compositor_oitf7"]
+
+[sub_resource type="Gradient" id="Gradient_usrx6"]
+offsets = PackedFloat32Array(0, 0.862745, 0.985294, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.491367, 0.491367, 0.491367, 1, 0.676471, 0.676471, 0.676471, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_usrx6"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_oitf7"]
+color_ramp = SubResource("Gradient_usrx6")
+noise = SubResource("FastNoiseLite_usrx6")
+
+[sub_resource type="FogMaterial" id="FogMaterial_63lvr"]
+albedo = Color(0.673511, 0.662861, 0.673259, 1)
+height_falloff = 3.32089
+edge_fade = 1.442
+density_texture = SubResource("NoiseTexture3D_oitf7")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5uufe"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_63lvr"]
+noise = SubResource("FastNoiseLite_5uufe")
+
+[sub_resource type="FogMaterial" id="FogMaterial_vit7n"]
+density = 0.5
+height_falloff = 1e-05
+edge_fade = 1e-05
+density_texture = SubResource("NoiseTexture3D_63lvr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vit7n"]
+albedo_texture = ExtResource("2_3vsom")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3a8os"]
+
+[sub_resource type="Animation" id="Animation_ia0g5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/SubViewportContainer/SubViewport/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.15718, 0.874274, 1.17115)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/SubViewportContainer/SubViewport/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0849807, -0.092856, -0.00790404)]
+}
+
+[sub_resource type="Animation" id="Animation_jwbto"]
+resource_name = "camera_move"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/SubViewportContainer/SubViewport/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.00333, 3.99947, 6.03225),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.15718, 0.874274, 1.17115), Vector3(-1.04092, 1.03368, 1.17115), Vector3(-1.28122, 0.939883, 1.17115), Vector3(-1.41339, 0.7722, 1.17115)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/SubViewportContainer/SubViewport/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.0009, 4.00019, 6.03333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0849807, -0.092856, -0.00790404), Vector3(-0.0770055, 0.108676, -0.0255639), Vector3(0.0339007, -0.116994, -0.0134815), Vector3(-0.0715245, 0.0181929, -0.00108208)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ia0g5"]
+_data = {
+&"RESET": SubResource("Animation_ia0g5"),
+&"camera_move": SubResource("Animation_jwbto")
+}
+
+[node name="Bcg" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+process_mode = 3
+environment = SubResource("Environment_usrx6")
+camera_attributes = SubResource("CameraAttributesPractical_5uufe")
+compositor = SubResource("Compositor_oitf7")
+script = ExtResource("6_63lvr")
+
+[node name="fog" type="FogVolume" parent="WorldEnvironment"]
+transform = Transform3D(10.6882, 0, 0, 0, 3.98556, 0, 0, 0, 0.997238, 0.0398267, 0.616352, -0.384409)
+size = Vector3(1.5109, 1.55, 2)
+material = SubResource("FogMaterial_63lvr")
+script = ExtResource("1_usrx6")
+
+[node name="FogVolume" type="FogVolume" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.06357, -0.585373, 0.161621)
+size = Vector3(5.3067, 2, 1.67676)
+material = SubResource("FogMaterial_vit7n")
+script = ExtResource("1_usrx6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.65991, 0.751345, 0, -0.751345, 0.65991, 0, 3.03206, 3.24931)
+light_energy = 0.5
+light_indirect_energy = 0.86
+light_volumetric_fog_energy = 4.5
+
+[node name="Camera3D" type="Camera3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15718, 0.874274, 1.17115)
+
+[node name="ciosmakow" type="Sprite3D" parent="WorldEnvironment"]
+transform = Transform3D(0.125761, 0, 0, 0, 0.125761, 0, 0, 0, 0.125761, -0.00783599, -0.453131, -0.403011)
+modulate = Color(0.493545, 0.493546, 0.493546, 1)
+texture = ExtResource("1_b2fwj")
+
+[node name="admiral" type="Sprite3D" parent="WorldEnvironment"]
+transform = Transform3D(0.177378, 0, -0.195896, 0, 0.264269, 0, 0.195896, 0, 0.177378, 0.171258, 1.52951, -2.20894)
+texture = ExtResource("3_5uufe")
+
+[node name="FogVolume2" type="FogVolume" parent="WorldEnvironment/admiral"]
+transform = Transform3D(5.40943, 0, 5.24173, 0, 7.53244, 0, -5.24173, 0, 5.40943, 1.0811, -0.58025, 0.17991)
+size = Vector3(11.92, 3.7, 0.39)
+material = SubResource("FogMaterial_vit7n")
+script = ExtResource("1_usrx6")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldEnvironment/admiral"]
+transform = Transform3D(3.7642, -0.0965794, -0.374599, -0.0221062, -3.71191, 0.73487, -0.386217, -0.728832, -3.69303, -0.111369, 0.776145, -0.447148)
+light_color = Color(1, 0, 0, 1)
+light_energy = 10.0
+light_indirect_energy = 10.0
+light_volumetric_fog_energy = 10.0
+light_size = 1.51
+light_specular = 16.0
+spot_range = 1.45313
+spot_angle = 4.92719
+
+[node name="statek" type="Sprite3D" parent="WorldEnvironment/admiral"]
+transform = Transform3D(1.41522, -0.0193554, 1.03274, 0.0113056, 1.75195, 0.0173421, -1.03286, -0.00734394, 1.41525, -0.309663, -1.2724, 1.91695)
+flip_h = true
+texture = ExtResource("5_oitf7")
+
+[node name="tlo" type="MeshInstance3D" parent="WorldEnvironment"]
+transform = Transform3D(20.4874, 0, 0, 0, 0.580621, -9.41639, 0, 3.58171, 1.52647, 0.0643158, 0.91296, -4.29436)
+material_override = SubResource("StandardMaterial3D_vit7n")
+mesh = SubResource("PlaneMesh_3a8os")
+skeleton = NodePath("../..")
+
+[node name="animki" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ia0g5")
+}

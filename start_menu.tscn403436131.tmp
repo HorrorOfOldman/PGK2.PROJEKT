@@ -1,0 +1,185 @@
+[gd_scene load_steps=18 format=3 uid="uid://b2ocotnotxvq6"]
+
+[ext_resource type="PackedScene" uid="uid://yslc67x7uvs6" path="res://bcg.tscn" id="1_jwbto"]
+[ext_resource type="Script" uid="uid://d4hswcjbb0lwl" path="res://Skrypty/menu.gd" id="1_vpdu5"]
+[ext_resource type="AudioStream" uid="uid://c5uy3ykymarum" path="res://Assety/music/Redemption path   Trench Crusade   OST.mp3" id="2_ia0g5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ia0g5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vpdu5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v2mkm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ctwoq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ppfnh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7boi2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pgi0o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_73a2t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xsckg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gfl6h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kefd2"]
+
+[sub_resource type="Animation" id="Animation_ia0g5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/SubViewportContainer/SubViewport/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.15718, 0.874274, 1.17115)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/SubViewportContainer/SubViewport/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0849807, -0.092856, -0.00790404)]
+}
+
+[sub_resource type="Animation" id="Animation_jwbto"]
+resource_name = "camera_move"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/SubViewportContainer/SubViewport/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.00333, 3.99947, 6.03225),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.15718, 0.874274, 1.17115), Vector3(-1.04092, 1.03368, 1.17115), Vector3(-1.28122, 0.939883, 1.17115), Vector3(-1.41339, 0.7722, 1.17115)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/SubViewportContainer/SubViewport/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.0009, 4.00019, 6.03333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0849807, -0.092856, -0.00790404), Vector3(-0.0770055, 0.108676, -0.0255639), Vector3(0.0339007, -0.116994, -0.0134815), Vector3(-0.0715245, 0.0181929, -0.00108208)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ia0g5"]
+_data = {
+&"RESET": SubResource("Animation_ia0g5"),
+&"camera_move": SubResource("Animation_jwbto")
+}
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_vpdu5")
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="Bcg" parent="Background" instance=ExtResource("1_jwbto")]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Background/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1366, 720)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Background/SubViewportContainer/SubViewport"]
+transform = Transform3D(0.995723, 0, -0.092388, -0.00787543, 0.99636, -0.0848785, 0.0920517, 0.085243, 0.992099, -1.15718, 0.874274, 1.17115)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 80
+
+[node name="menu" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="Control/MarginContainer/menu"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 62
+text = "BezPrawAutorkich_Demo"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/menu"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="start" type="Button" parent="Control/MarginContainer/menu"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ia0g5")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_vpdu5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_v2mkm")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ctwoq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ppfnh")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_7boi2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pgi0o")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_73a2t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xsckg")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_gfl6h")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kefd2")
+text = "START Kamień Milowy"
+
+[node name="quit" type="Button" parent="Control/MarginContainer/menu"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ia0g5")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_vpdu5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_v2mkm")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ctwoq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ppfnh")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_7boi2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pgi0o")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_73a2t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xsckg")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_gfl6h")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kefd2")
+text = "EXIT Kamień Milowy"
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ia0g5")
+
+[node name="animki" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ia0g5")
+}
