@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://de8kx4feh4sga"]
+
+[ext_resource type="PackedScene" uid="uid://dn4cvr0gcspca" path="res://3D/model/level_test.glb" id="1_1d78h"]
+[ext_resource type="Texture2D" uid="uid://w12chvqmhj8v" path="res://gr/paving 2.png" id="2_xk0og"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_luka0"]
+albedo_texture = ExtResource("2_xk0og")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oldtw"]
+size = Vector3(1, 1.51611, 0.796387)
+
+[node name="level_test" instance=ExtResource("1_1d78h")]
+
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(38.2318, 0, 0, 0, -0.735138, 0, 0, 0, 38.2318, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_luka0")
+
+[node name="CollisionShape3D" parent="Cube/StaticBody3D" index="0"]
+transform = Transform3D(2.0088, 0, 0, 0, 1, 0, 0, 0, 2.01949, 0, -0.258062, 0.205598)
+shape = SubResource("BoxShape3D_oldtw")
+
+[node name="Label3D" type="Label3D" parent="Cube_001" index="1"]
+transform = Transform3D(0.528426, 0, 0.00545066, 0, 0.528699, 0, -0.0169942, 0, 0.169485, 5.41179, 0.292288, -2.63821)
+text = "W,A,S,D - Porusznie
+SPACJA - Skok
+LPM - Przycisk akcji"
+font_size = 100

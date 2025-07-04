@@ -1,0 +1,630 @@
+[gd_scene load_steps=27 format=3 uid="uid://c1v8mknrbl12v"]
+
+[ext_resource type="Script" uid="uid://pel2uwd6ku0w" path="res://script/Walka0.gd" id="1_14cj8"]
+[ext_resource type="Resource" uid="uid://bgvrmx005sf50" path="res://enemy_data/skeleton.tres" id="2_mfuma"]
+[ext_resource type="Texture2D" uid="uid://dnjtn408dqqb6" path="res://gr_fight_bcg/background.jpg" id="4_d0ili"]
+[ext_resource type="Texture2D" uid="uid://m3hxvufagco7" path="res://gr_fight_bcg/JWDLx5AZBtI.jpg" id="5_w68gf"]
+[ext_resource type="Texture2D" uid="uid://cd2ewtgkh5tl2" path="res://gr_fight_bcg/tl3.png" id="6_n6nsj"]
+[ext_resource type="FontFile" uid="uid://dawmbadlbv4dy" path="res://font/Silver.ttf" id="7_b3qco"]
+[ext_resource type="Texture2D" uid="uid://dna5b58kprdad" path="res://gr_enemy/MISTERIO.png" id="7_ybdjg"]
+[ext_resource type="AudioStream" uid="uid://dt3ihuiayvg24" path="res://music/Propaganda.mp3" id="9_5jcwi"]
+[ext_resource type="AudioStream" uid="uid://bamqvgqn3o8d" path="res://sound_ef/Townsperson_Die_001.wav" id="10_3usss"]
+[ext_resource type="AudioStream" uid="uid://bgbhndy06h5so" path="res://sound_ef/life.wav" id="11_g5qwl"]
+[ext_resource type="AudioStream" uid="uid://c33l2rrkwnvmv" path="res://sound_ef/GAMEOVER.wav" id="12_sqgl2"]
+[ext_resource type="AudioStream" uid="uid://cpuwo2qekkan1" path="res://sound_ef/Townsperson_Attack_002.wav" id="13_o1xtf"]
+[ext_resource type="AudioStream" uid="uid://cwjf1wwqwjej1" path="res://music/fight/15 - Dungeon.ogg" id="14_aathk"]
+[ext_resource type="AudioStream" uid="uid://ltnp1jv4vb5d" path="res://music/fight/24 - RV 610 - Fecit potentiam.ogg" id="15_xjeus"]
+[ext_resource type="AudioStream" uid="uid://dpweewllgwyvi" path="res://music/fight/Juhani Junkala [Retro Game Music Pack] Level 3.mp3" id="16_64xtk"]
+[ext_resource type="Texture2D" uid="uid://b2wkdc3uc3lmd" path="res://gr/game_over.png" id="17_p50ng"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xffho"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7g5j"]
+bg_color = Color(0, 0, 0.956863, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(1, 0.739106, 0.506242, 1)
+border_blend = true
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="Animation" id="Animation_b3fxo"]
+resource_name = "GameOver"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOver:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kipht"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyContainer/EnemyjegoWrogość:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(683, 360)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOver:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mp8tk"]
+resource_name = "enemy_damaged"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyContainer/EnemyjegoWrogość:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0998152, 0.198545, 0.298361, 0.399261, 0.499076, 0.599976),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gvtb0"]
+resource_name = "enemy_died"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyContainer/EnemyjegoWrogość:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1bhc5"]
+resource_name = "enemy_fire_effect"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyContainer/EnemyjegoWrogość:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.992157, 0.87451, 0.137255, 1), Color(1, 1, 1, 1), Color(0.992157, 0.87451, 0.137255, 1), Color(1, 1, 1, 1), Color(0.992157, 0.87451, 0.137255, 1), Color(1, 1, 1, 1), Color(0.992157, 0.87451, 0.137255, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8lx8s"]
+resource_name = "mini_shake"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.200715, 0.3, 0.399261, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(683, 360), Vector2(667.855, 341.42), Vector2(702, 381.755), Vector2(663.325, 383.72), Vector2(706.325, 347.46), Vector2(683, 360)]
+}
+
+[sub_resource type="Animation" id="Animation_q6r7s"]
+resource_name = "shake"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0987302, 0.200715, 0.298361, 0.399261, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(683, 360), Vector2(623, 313), Vector2(721, 431), Vector2(563, 421), Vector2(740, 311), Vector2(683, 360)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q6r7s"]
+_data = {
+&"GameOver": SubResource("Animation_b3fxo"),
+&"RESET": SubResource("Animation_kipht"),
+&"enemy_damaged": SubResource("Animation_mp8tk"),
+&"enemy_died": SubResource("Animation_gvtb0"),
+&"enemy_fire_effect": SubResource("Animation_1bhc5"),
+&"mini_shake": SubResource("Animation_8lx8s"),
+&"shake": SubResource("Animation_q6r7s")
+}
+
+[node name="walka" type="Node2D"]
+script = ExtResource("1_14cj8")
+enemy = ExtResource("2_mfuma")
+
+[node name="tło" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1366, 720)
+offset_left = -72.0
+offset_top = -48.0
+offset_right = 2488.0
+offset_bottom = 1552.0
+scale = Vector2(0.587881, 0.539734)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("CompressedTexture2D_xffho")
+
+[node name="lv_1" type="TextureRect" parent="tło"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_d0ili")
+
+[node name="lv_2" type="TextureRect" parent="tło"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_w68gf")
+
+[node name="lv_3" type="TextureRect" parent="tło"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_n6nsj")
+
+[node name="EnemyContainer" type="VBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 144.0
+offset_top = 128.0
+offset_right = 1254.0
+offset_bottom = 2796.0
+grow_horizontal = 2
+scale = Vector2(0.922606, 0.665609)
+pivot_offset = Vector2(21.089, 19.8715)
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="EnemyContainer"]
+modulate = Color(0, 1, 0, 1)
+show_behind_parent = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 20.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+max_value = 200.0
+step = 1.0
+value = 25.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="EnemyContainer/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5169
+offset_top = -12.9641
+offset_right = 63.483
+offset_bottom = 58.0359
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 30
+text = "HP: 25/50
+"
+
+[node name="EnemyjegoWrogość" type="TextureRect" parent="EnemyContainer"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_ybdjg")
+
+[node name="PlayerPanel" type="Panel" parent="."]
+offset_left = -21.0
+offset_top = 556.0
+offset_right = 1365.0
+offset_bottom = 757.0
+size_flags_horizontal = 6
+size_flags_vertical = 2
+
+[node name="PlayerData" type="HBoxContainer" parent="PlayerPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -719.0
+offset_top = -188.5
+offset_right = 588.0
+offset_bottom = -24.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.07212, 2.02256)
+
+[node name="Label" type="Label" parent="PlayerPanel/PlayerData"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 50
+text = "PLAYER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="ProgressBar" parent="PlayerPanel/PlayerData/Label"]
+modulate = Color(0.38542, 0.557437, 3.85046e-07, 1)
+self_modulate = Color(1, 1, 0.380392, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 92.0
+offset_top = -4.242
+offset_right = 284.0
+offset_bottom = 22.758
+scale = Vector2(2.26851, 1)
+theme_override_colors/font_color = Color(0.262745, 1, 0.262745, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.890196, 1)
+max_value = 50.0
+step = 1.0
+value = 15.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="PlayerPanel/PlayerData/Label/Health"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 74.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 30
+text = "HP: 15/50"
+
+[node name="Mana" type="ProgressBar" parent="PlayerPanel/PlayerData/Label"]
+modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+offset_left = 92.0
+offset_top = 24.0
+offset_right = 284.0
+offset_bottom = 51.0
+scale = Vector2(2.269, 1)
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+max_value = 30.0
+step = 1.0
+value = 10.0
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="PlayerPanel/PlayerData/Label/Mana"]
+layout_mode = 0
+offset_left = 0.148855
+offset_top = 1.42362
+offset_right = 67.1489
+offset_bottom = 24.4236
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 30
+text = "MP: 1/30"
+
+[node name="ActionPanel" type="Panel" parent="."]
+offset_right = 1378.0
+offset_bottom = 74.0
+
+[node name="Actions" type="HBoxContainer" parent="ActionPanel"]
+modulate = Color(0.121569, 1, 1, 1)
+self_modulate = Color(1, 0, 1, 1)
+layout_direction = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -689.0
+offset_top = -37.0
+offset_right = 961.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.827802, 1.09801)
+theme_override_constants/separation = 150
+
+[node name="ATTACK" type="Button" parent="ActionPanel/Actions"]
+clip_contents = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_disabled_color = Color(0.97319, 0.883816, 0.933583, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.502785, 0.145732, 0.447143, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 50
+text = "Uderzenie
+"
+
+[node name="ITEMS" type="Button" parent="ActionPanel/Actions"]
+clip_contents = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_disabled_color = Color(0.97319, 0.883816, 0.933583, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.502785, 0.145732, 0.447143, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 50
+text = "Ekwipunek"
+
+[node name="MAGIC" type="Button" parent="ActionPanel/Actions"]
+clip_contents = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_disabled_color = Color(0.97319, 0.883816, 0.933583, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.502785, 0.145732, 0.447143, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 50
+text = "Czary"
+
+[node name="RUN" type="Button" parent="ActionPanel/Actions"]
+clip_contents = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_disabled_color = Color(0.97319, 0.883816, 0.933583, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.502785, 0.145732, 0.447143, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 1, 1)
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 50
+text = "Ucieczka"
+
+[node name="textbox" type="Panel" parent="."]
+visible = false
+self_modulate = Color(0.716296, 0.716296, 0.716296, 1)
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_right = 1354.0
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_n7g5j")
+
+[node name="Label" type="Label" parent="textbox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.5
+offset_top = -38.0
+offset_right = 301.5
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 64
+text = "Dziki Ciosmak Atakuje!"
+
+[node name="Label2" type="Label" parent="textbox"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -76.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 55
+text = ">"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_q6r7s")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(683, 360)
+ignore_rotation = false
+
+[node name="dzwieki" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_5jcwi")
+volume_db = -20.0
+pitch_scale = 0.77
+
+[node name="dead" type="AudioStreamPlayer2D" parent="dzwieki"]
+stream = ExtResource("10_3usss")
+
+[node name="win" type="AudioStreamPlayer2D" parent="dzwieki"]
+stream = ExtResource("11_g5qwl")
+
+[node name="player_dead" type="AudioStreamPlayer2D" parent="dzwieki"]
+stream = ExtResource("12_sqgl2")
+
+[node name="enemy_turn" type="AudioStreamPlayer2D" parent="dzwieki"]
+stream = ExtResource("13_o1xtf")
+
+[node name="e_lv1" type="AudioStreamPlayer2D" parent="dzwieki"]
+stream = ExtResource("14_aathk")
+
+[node name="e_lv2" type="AudioStreamPlayer2D" parent="dzwieki"]
+stream = ExtResource("15_xjeus")
+
+[node name="e_lv3" type="AudioStreamPlayer2D" parent="dzwieki"]
+stream = ExtResource("16_64xtk")
+volume_db = -5.0
+
+[node name="GameOver" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+offset_left = -72.0
+offset_top = -24.0
+offset_right = 2064.0
+offset_bottom = 1120.0
+scale = Vector2(0.68363, 0.71064)
+texture = ExtResource("17_p50ng")
+
+[node name="zaklecia" type="HBoxContainer" parent="."]
+visible = false
+offset_left = 392.0
+offset_right = 719.0
+offset_bottom = 64.0
+scale = Vector2(1.84, 1.08)
+
+[node name="Spell1" type="Button" parent="zaklecia"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 50
+text = "Spell_1"
+
+[node name="Spell2" type="Button" parent="zaklecia"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 50
+text = "Spell_2"
+
+[node name="Spell3" type="Button" parent="zaklecia"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 50
+text = "Spell_3"
+
+[node name="ekwipunek" type="HBoxContainer" parent="."]
+offset_left = 496.0
+offset_right = 804.0
+offset_bottom = 77.0
+
+[node name="it_1" type="VBoxContainer" parent="ekwipunek"]
+layout_mode = 2
+
+[node name="Item_1" type="Button" parent="ekwipunek/it_1"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 50
+text = "Item_1"
+
+[node name="it_1_il" type="Label" parent="ekwipunek/it_1"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="it_2" type="VBoxContainer" parent="ekwipunek"]
+layout_mode = 2
+
+[node name="Item_2" type="Button" parent="ekwipunek/it_2"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 50
+text = "Item_2"
+
+[node name="it_2_il" type="Label" parent="ekwipunek/it_2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="it_3" type="VBoxContainer" parent="ekwipunek"]
+layout_mode = 2
+
+[node name="Item_3" type="Button" parent="ekwipunek/it_3"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 50
+text = "Item_3"
+
+[node name="it_3_il" type="Label" parent="ekwipunek/it_3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="back" type="Button" parent="."]
+visible = false
+modulate = Color(0.784314, 0, 1, 1)
+offset_right = 56.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("7_b3qco")
+theme_override_font_sizes/font_size = 50
+text = "Powrót"
+
+[connection signal="pressed" from="ActionPanel/Actions/ATTACK" to="." method="_on_ATTACK_pressed"]
+[connection signal="pressed" from="ActionPanel/Actions/ITEMS" to="." method="_on_ITEMS_pressed"]
+[connection signal="pressed" from="ActionPanel/Actions/MAGIC" to="." method="_on_MAGIC_pressed"]
+[connection signal="pressed" from="ActionPanel/Actions/RUN" to="." method="_on_RUN_pressed"]
+[connection signal="pressed" from="zaklecia/Spell1" to="." method="_on_spell_1_pressed"]
+[connection signal="pressed" from="zaklecia/Spell2" to="." method="_on_spell_2_pressed"]
+[connection signal="pressed" from="zaklecia/Spell3" to="." method="_on_spell_3_pressed"]
+[connection signal="pressed" from="ekwipunek/it_1/Item_1" to="." method="_on_item_1_pressed"]
+[connection signal="pressed" from="ekwipunek/it_2/Item_2" to="." method="_on_item_2_pressed"]
+[connection signal="pressed" from="ekwipunek/it_3/Item_3" to="." method="_on_item_3_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

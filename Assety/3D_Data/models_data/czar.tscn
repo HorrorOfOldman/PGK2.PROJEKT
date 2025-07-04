@@ -1,0 +1,89 @@
+[gd_scene load_steps=10 format=3 uid="uid://d1gyw2h4h88rp"]
+
+[ext_resource type="PackedScene" uid="uid://bsd7f38parnth" path="res://3D/build/czar.glb" id="1_2u58v"]
+[ext_resource type="Script" uid="uid://d0qyjccdtjedo" path="res://Assety/3D_Data/scripts/czarodziejka.gd" id="1_hy7sp"]
+[ext_resource type="Texture2D" uid="uid://dxqm7gs43ickr" path="res://gr/inter/action.png" id="2_12rqk"]
+[ext_resource type="Script" uid="uid://brjq67mownsy6" path="res://Assety/3D_Data/scripts/sprite_rotate.gd" id="3_hy7sp"]
+[ext_resource type="AudioStream" uid="uid://bleu6u5primty" path="res://sound_ef/maniacal_laught.mp3" id="5_hy7sp"]
+[ext_resource type="FontFile" uid="uid://dawmbadlbv4dy" path="res://font/Silver.ttf" id="5_r6y36"]
+[ext_resource type="PackedScene" uid="uid://dqf8l856mk53q" path="res://Assety/scenes/fight/B_fight.tscn" id="7_hnxbj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mg3k3"]
+size = Vector3(0.872559, 1.30905, 0.946289)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mdj7"]
+bg_color = Color(0, 0, 0.956863, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(1, 0.739106, 0.506242, 1)
+border_blend = true
+shadow_offset = Vector2(10, 10)
+
+[node name="Czar" type="CharacterBody3D"]
+script = ExtResource("1_hy7sp")
+
+[node name="czar" parent="." instance=ExtResource("1_2u58v")]
+transform = Transform3D(2.28477, 0, 0, 0, 2.28477, 0, 0, 0, 2.28477, 0.000540197, 1.19209e-07, -0.492192)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="czar"]
+transform = Transform3D(1.98, 0, 0, 0, 1.98, 0, 0, 0, 1.98, 0.0250714, 1.48455, 0.661382)
+shape = SubResource("BoxShape3D_mg3k3")
+
+[node name="Icon" type="Sprite3D" parent="."]
+transform = Transform3D(3.32863, 0, 0, 0, 3.32863, 0, 0, 0, 3.32863, 0, 8.8687, -0.256302)
+texture_filter = 0
+texture = ExtResource("2_12rqk")
+script = ExtResource("3_hy7sp")
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.43417, -0.402345)
+stream = ExtResource("5_hy7sp")
+
+[node name="textbox" type="Panel" parent="."]
+self_modulate = Color(0.716296, 0.716296, 0.716296, 1)
+offset_top = 512.0
+offset_right = 1338.0
+offset_bottom = 735.0
+scale = Vector2(1.02467, 0.943834)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mdj7")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="textbox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.5
+offset_top = -38.0
+offset_right = 301.5
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_r6y36")
+theme_override_font_sizes/font_size = 64
+text = "Tekst Testowy"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="textbox"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -76.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_r6y36")
+theme_override_font_sizes/font_size = 55
+text = ">"
+metadata/_edit_use_anchors_ = true
+
+[node name="walka" parent="." instance=ExtResource("7_hnxbj")]

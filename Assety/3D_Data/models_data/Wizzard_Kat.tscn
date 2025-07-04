@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://brvube381mk8u"]
+
+[ext_resource type="Script" uid="uid://bvwc62ndgapli" path="res://Assety/3D_Data/scripts/wiz_kat.gd" id="1_312hu"]
+[ext_resource type="PackedScene" uid="uid://hcwg518wr4v2" path="res://3D/model/wizzard.glb" id="2_3oq7m"]
+[ext_resource type="Texture2D" uid="uid://dxqm7gs43ickr" path="res://gr/inter/action.png" id="3_hvgc8"]
+[ext_resource type="Script" uid="uid://brjq67mownsy6" path="res://Assety/3D_Data/scripts/sprite_rotate.gd" id="4_okfei"]
+[ext_resource type="AudioStream" uid="uid://feiqasm57t03" path="res://sound_ef/Townsperson_See_002.wav" id="5_ekxf1"]
+[ext_resource type="FontFile" uid="uid://dawmbadlbv4dy" path="res://font/Silver.ttf" id="6_qwxhc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8dqgw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j85h4"]
+bg_color = Color(0, 0, 0.956863, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(1, 0.739106, 0.506242, 1)
+border_blend = true
+shadow_offset = Vector2(10, 10)
+
+[node name="Wizzard" type="CharacterBody3D"]
+script = ExtResource("1_312hu")
+
+[node name="wizzard" parent="." instance=ExtResource("2_3oq7m")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.01992, 0, 0, 0, 2.22889, 0, 0, 0, 2.01992, 0, 1.86676, 0)
+shape = SubResource("CapsuleShape3D_8dqgw")
+
+[node name="Icon" type="Sprite3D" parent="."]
+transform = Transform3D(1.93114, 0, 0, 0, 1.93114, 0, 0, 0, 1.93114, 0, 5.11556, 0)
+texture_filter = 0
+texture = ExtResource("3_hvgc8")
+script = ExtResource("4_okfei")
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_ekxf1")
+
+[node name="textbox" type="Panel" parent="."]
+self_modulate = Color(0.716296, 0.716296, 0.716296, 1)
+offset_top = 512.0
+offset_right = 1338.0
+offset_bottom = 735.0
+scale = Vector2(1.02467, 0.943834)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_j85h4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="textbox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.5
+offset_top = -38.0
+offset_right = 301.5
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_qwxhc")
+theme_override_font_sizes/font_size = 64
+text = "Tekst Testowy"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="textbox"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -76.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_qwxhc")
+theme_override_font_sizes/font_size = 55
+text = ">"
+metadata/_edit_use_anchors_ = true

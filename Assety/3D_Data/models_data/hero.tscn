@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dno84p2mrwqb2"]
+
+[ext_resource type="Script" uid="uid://dmtjy6s7pk5bo" path="res://Assety/3D_Data/scripts/hero.gd" id="1_6qrbs"]
+[ext_resource type="PackedScene" uid="uid://d3ax1t4jrj6f4" path="res://3D/model/ludekV2.glb" id="2_6qrbs"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bkhy3"]
+radius = 0.449115
+height = 2.0496
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6qrbs"]
+
+[node name="Hero" type="CharacterBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -4.61497, 0)
+script = ExtResource("1_6qrbs")
+
+[node name="Zbyszek" parent="." instance=ExtResource("2_6qrbs")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 4.61497, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.0673e-07, 0, 2.17861, 0, 2.4417, 0, -2.4417, 0, -9.52301e-08, 0, 4.25156, 0)
+shape = SubResource("CapsuleShape3D_bkhy3")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.92412, 0.382103, 0, -0.382103, 0.92412, 0, 6.50323, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+shape = SubResource("SphereShape3D_6qrbs")
+spring_length = 8.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, -1.77636e-15, 1, 2.98023e-08, 0, -2.98023e-08, 1, -9.43897e-08, -0.825106, 1.99553)

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://xv445memp7tc"]
+
+[ext_resource type="PackedScene" uid="uid://depmofbcnv5xb" path="res://Assety/3D_Data/models_data/szkieletor.tscn" id="1_2gg26"]
+[ext_resource type="PackedScene" uid="uid://dno84p2mrwqb2" path="res://Assety/3D_Data/models_data/hero.tscn" id="2_2gg26"]
+[ext_resource type="PackedScene" uid="uid://6hvqana2kg6i" path="res://3D/envairoment/3/prog.glb" id="3_x1xba"]
+
+[sub_resource type="Environment" id="Environment_x1xba"]
+
+[node name="Test" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_x1xba")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7175, 9.1205, 0)
+
+[node name="Szkieletor" parent="." instance=ExtResource("1_2gg26")]
+transform = Transform3D(-0.999996, 0, 0.00287984, 0, 1, 0, -0.00287984, 0, -0.999996, 15.8, 0, 0)
+
+[node name="Hero" parent="." instance=ExtResource("2_2gg26")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.2378, 1.10535, 0)
+
+[node name="prog" parent="." instance=ExtResource("3_x1xba")]
+transform = Transform3D(24.1474, 0, 0, 0, 1, 0, 0, 0, 10.4582, 0, 0, 0)
+
+[node name="prog2" parent="." instance=ExtResource("3_x1xba")]
+transform = Transform3D(1, 0, 0, 0, 36.7016, 0, 0, 0, 3.01739, 0, 3.61361, 0)

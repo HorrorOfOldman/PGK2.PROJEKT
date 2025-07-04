@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://depmofbcnv5xb"]
+
+[ext_resource type="Script" uid="uid://cunee60y7r0av" path="res://Assety/3D_Data/scripts/szkieletor_logic.gd" id="1_feygm"]
+[ext_resource type="AudioStream" uid="uid://cdreb4xnvkvqd" path="res://sound_ef/alarm.ogg" id="2_8nyet"]
+[ext_resource type="Texture2D" uid="uid://tm3cgslwn1jf" path="res://gr/danger.png" id="3_8iilg"]
+[ext_resource type="Script" uid="uid://brjq67mownsy6" path="res://Assety/3D_Data/scripts/sprite_rotate.gd" id="4_8nyet"]
+[ext_resource type="PackedScene" uid="uid://b2n8egg4ij53t" path="res://3D/model/szkieletor2.glb" id="5_feygm"]
+[ext_resource type="PackedScene" uid="uid://c1v8mknrbl12v" path="res://Assety/scenes/fight/l1_fight.tscn" id="6_rhgtd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6ah2f"]
+radius = 0.70788
+height = 3.7269
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rhgtd"]
+radius = 11.394
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_feygm"]
+radius = 1.42281
+
+[node name="Szkieletor" type="CharacterBody3D"]
+transform = Transform3D(-0.999996, 0, 0.00287984, 0, 1, 0, -0.00287984, 0, -0.999996, 0, 0, 0)
+script = ExtResource("1_feygm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 4.65661e-10, 0, 1, 0, -4.65661e-10, 0, 1, -0.0376862, 1.65225, -0.0105886)
+shape = SubResource("CapsuleShape3D_6ah2f")
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.44854, 0)
+stream = ExtResource("2_8nyet")
+
+[node name="Icon" type="Sprite3D" parent="."]
+transform = Transform3D(2.69243, 0, 0, 0, 2.69243, 0, 0, 0, 2.69243, 0, 4.20917, 0.00665081)
+texture_filter = 0
+texture = ExtResource("3_8iilg")
+script = ExtResource("4_8nyet")
+
+[node name="ChaseArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 2.32831e-10, 0, 1, 0, -2.32831e-10, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChaseArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37032, 0)
+shape = SubResource("SphereShape3D_rhgtd")
+
+[node name="TouchArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TouchArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30897, 0)
+shape = SubResource("SphereShape3D_feygm")
+debug_color = Color(0.92549, 0, 0.678431, 1)
+
+[node name="Model3D" type="MeshInstance3D" parent="."]
+
+[node name="szkieletor2" parent="Model3D" instance=ExtResource("5_feygm")]
+
+[node name="walka" parent="." instance=ExtResource("6_rhgtd")]

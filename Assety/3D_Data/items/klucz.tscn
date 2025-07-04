@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://y2sijukud14b"]
+
+[ext_resource type="PackedScene" uid="uid://bouo6ch1jyelg" path="res://3D/envairoment/1/klucz.glb" id="1_2v5so"]
+[ext_resource type="Script" uid="uid://dt255u63fie5e" path="res://Assety/3D_Data/scripts/klucz_logic.gd" id="1_hu3r5"]
+[ext_resource type="Texture2D" uid="uid://dxqm7gs43ickr" path="res://gr/inter/action.png" id="2_l4ohq"]
+[ext_resource type="Script" uid="uid://brjq67mownsy6" path="res://Assety/3D_Data/scripts/sprite_rotate.gd" id="4_eekop"]
+[ext_resource type="AudioStream" uid="uid://bfw50h8agiaub" path="res://sound_ef/coin3.wav" id="5_eekop"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eekop"]
+size = Vector3(2.08228, 0.460999, 6.39285)
+
+[sub_resource type="Animation" id="Animation_eekop"]
+resource_name = "hide"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("klucz:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -1.08728), Vector3(0, -2.43024, -1.08728)]
+}
+
+[sub_resource type="Animation" id="Animation_1tvrh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("klucz:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -1.08728)]
+}
+
+[sub_resource type="Animation" id="Animation_myhec"]
+resource_name = "show"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("klucz:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -2.43024, -1.08728), Vector3(0, 0, -1.08728)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1tvrh"]
+_data = {
+&"RESET": SubResource("Animation_1tvrh"),
+&"hide": SubResource("Animation_eekop"),
+&"show": SubResource("Animation_myhec")
+}
+
+[node name="Klucz" type="Node3D"]
+script = ExtResource("1_hu3r5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="klucz" parent="." instance=ExtResource("1_2v5so")]
+transform = Transform3D(0.507728, 0, 0, 0, 0.507728, 0, 0, 0, 0.507728, 0, 0, -1.08728)
+
+[node name="Icon" type="Sprite3D" parent="klucz"]
+transform = Transform3D(4.9525, 0, 0, 0, 4.9525, 0, 0, 0, 4.9525, 0, 2.98193, 1.97049)
+texture_filter = 0
+texture = ExtResource("2_l4ohq")
+script = ExtResource("4_eekop")
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="klucz"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.99021)
+stream = ExtResource("5_eekop")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="klucz"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -0.0279541, 0.0205993, 2.18553)
+shape = SubResource("BoxShape3D_eekop")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1tvrh")
+}

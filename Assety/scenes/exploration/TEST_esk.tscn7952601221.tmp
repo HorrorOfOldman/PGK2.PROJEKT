@@ -1,0 +1,199 @@
+[gd_scene load_steps=11 format=3 uid="uid://dympqgpy6abio"]
+
+[ext_resource type="PackedScene" uid="uid://bp22ctgkmnf7e" path="res://Assety/scenes/exploration/movement_test.tscn" id="1_2umje"]
+[ext_resource type="Script" uid="uid://7c61q5dlwdi1" path="res://Assety/script/eksploracja_startup.gd" id="1_mv8gp"]
+[ext_resource type="Texture2D" uid="uid://dm088h2nrhdhe" path="res://Assety/gr/inter/avatar_8bit_frame.png" id="2_e4gff"]
+[ext_resource type="FontFile" uid="uid://dawmbadlbv4dy" path="res://Assety/font/Silver.ttf" id="3_jpw62"]
+[ext_resource type="Texture2D" uid="uid://bck3c3ichohfo" path="res://Assety/gr/inter/klucz.png" id="5_xfggm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mv8gp"]
+bg_color = Color(0, 0, 0.956863, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(1, 0.739106, 0.506242, 1)
+border_blend = true
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="Animation" id="Animation_0qong"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QuestInfo:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jf1yy"]
+resource_name = "qestInfo_hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QuestInfo:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xfggm"]
+resource_name = "qestInfo_show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QuestInfo:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0qong"]
+_data = {
+&"RESET": SubResource("Animation_0qong"),
+&"qestInfo_hide": SubResource("Animation_jf1yy"),
+&"qestInfo_show": SubResource("Animation_xfggm")
+}
+
+[node name="TestEsk" type="CanvasLayer"]
+script = ExtResource("1_mv8gp")
+
+[node name="MovementTest" parent="." instance=ExtResource("1_2umje")]
+
+[node name="Interface" type="Node2D" parent="."]
+scale = Vector2(34.217, 17.9633)
+
+[node name="Avatar8BitFrame" type="Sprite2D" parent="Interface"]
+position = Vector2(2.33802, 4.00817)
+scale = Vector2(0.004, 0.007)
+texture = ExtResource("2_e4gff")
+
+[node name="HeroInfo" type="VBoxContainer" parent="Interface/Avatar8BitFrame"]
+offset_left = 540.667
+offset_top = -254.487
+offset_right = 580.667
+offset_bottom = -214.487
+scale = Vector2(77.263, 14.0791)
+
+[node name="Hp" type="ProgressBar" parent="Interface/Avatar8BitFrame/HeroInfo"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_jpw62")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Interface/Avatar8BitFrame/HeroInfo/Hp"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.0827404, 0.2)
+theme_override_fonts/font = ExtResource("3_jpw62")
+theme_override_font_sizes/font_size = 130
+text = "HP"
+
+[node name="Mp" type="ProgressBar" parent="Interface/Avatar8BitFrame/HeroInfo"]
+modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_jpw62")
+theme_override_font_sizes/font_size = 0
+step = 1.0
+value = 75.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Interface/Avatar8BitFrame/HeroInfo/Mp"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.0827404, 0.2)
+theme_override_fonts/font = ExtResource("3_jpw62")
+theme_override_font_sizes/font_size = 130
+text = "MP"
+
+[node name="textbox" type="Panel" parent="Interface"]
+self_modulate = Color(0.716296, 0.716296, 0.716296, 1)
+offset_top = 28.7252
+offset_right = 1338.0
+offset_bottom = 251.725
+scale = Vector2(0.0299283, 0.0520024)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_mv8gp")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Interface/textbox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.5
+offset_top = -38.0
+offset_right = 301.5
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_jpw62")
+theme_override_font_sizes/font_size = 64
+text = "Tekst Testowy"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Interface/textbox"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -76.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_jpw62")
+theme_override_font_sizes/font_size = 55
+text = ">"
+metadata/_edit_use_anchors_ = true
+
+[node name="klucz" type="Sprite2D" parent="Interface"]
+texture_filter = 1
+position = Vector2(36.2393, 2.11542)
+scale = Vector2(0.0848708, 0.1912)
+texture = ExtResource("5_xfggm")
+
+[node name="QuestInfo" type="Label" parent="Interface"]
+modulate = Color(1, 0.911115, 0.213694, 1)
+offset_left = 4.32534
+offset_top = 13.9729
+offset_right = 1509.33
+offset_bottom = 235.973
+scale = Vector2(0.02, 0.02)
+theme_override_fonts/font = ExtResource("3_jpw62")
+theme_override_font_sizes/font_size = 200
+text = "Coś zrobiłeś"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Interface"]
+libraries = {
+&"": SubResource("AnimationLibrary_0qong")
+}

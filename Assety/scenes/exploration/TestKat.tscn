@@ -1,0 +1,271 @@
+[gd_scene load_steps=16 format=3 uid="uid://bg4p35h6vfp5y"]
+
+[ext_resource type="Script" uid="uid://qdo7k571ryp0" path="res://script/katakumby_setup.gd" id="1_b254r"]
+[ext_resource type="PackedScene" uid="uid://cy6p0qe66npbu" path="res://Assety/scenes/exploration/Katakumby_test.tscn" id="1_uy062"]
+[ext_resource type="Texture2D" uid="uid://dm088h2nrhdhe" path="res://gr/inter/avatar_8bit_frame.png" id="3_kfrup"]
+[ext_resource type="FontFile" uid="uid://dawmbadlbv4dy" path="res://font/Silver.ttf" id="4_okyme"]
+[ext_resource type="Texture2D" uid="uid://bck3c3ichohfo" path="res://gr/inter/klucz.png" id="5_k5ljv"]
+[ext_resource type="Texture2D" uid="uid://ds00urxouhk5l" path="res://gr/inter/meat.png" id="6_okyme"]
+[ext_resource type="Texture2D" uid="uid://b2wkdc3uc3lmd" path="res://gr/game_over.png" id="7_k5ljv"]
+[ext_resource type="Texture2D" uid="uid://bqgnvxlkexnw0" path="res://gr/inter/klucz_boss.png" id="7_kfrup"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfrup"]
+bg_color = Color(0, 0, 0.956863, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(1, 0.739106, 0.506242, 1)
+border_blend = true
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="Animation" id="Animation_0qong"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QuestInfo:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Przejscie:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k5ljv"]
+resource_name = "fight_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Przejscie:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kfrup"]
+resource_name = "fight_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Przejscie:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jf1yy"]
+resource_name = "qestInfo_hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QuestInfo:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xfggm"]
+resource_name = "qestInfo_show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QuestInfo:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0qong"]
+_data = {
+&"RESET": SubResource("Animation_0qong"),
+&"fight_in": SubResource("Animation_k5ljv"),
+&"fight_out": SubResource("Animation_kfrup"),
+&"qestInfo_hide": SubResource("Animation_jf1yy"),
+&"qestInfo_show": SubResource("Animation_xfggm")
+}
+
+[node name="TestKat" type="CanvasLayer"]
+script = ExtResource("1_b254r")
+
+[node name="KatakumbyTest" parent="." instance=ExtResource("1_uy062")]
+script = null
+
+[node name="Interface" type="Node2D" parent="."]
+scale = Vector2(34.217, 17.9633)
+
+[node name="Avatar8BitFrame" type="Sprite2D" parent="Interface"]
+position = Vector2(1.87042, 3.39581)
+scale = Vector2(0.003, 0.006)
+texture = ExtResource("3_kfrup")
+
+[node name="HeroInfo" type="VBoxContainer" parent="Interface/Avatar8BitFrame"]
+offset_left = 514.349
+offset_top = -300.674
+offset_right = 554.349
+offset_bottom = -260.674
+scale = Vector2(58.3375, 48.1794)
+
+[node name="Hp" type="ProgressBar" parent="Interface/Avatar8BitFrame/HeroInfo"]
+modulate = Color(0.38542, 0.557437, 3.85046e-07, 1)
+self_modulate = Color(1, 1, 0.380392, 1)
+show_behind_parent = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.816873, 0.838243, 0.890354, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.890196, 1)
+max_value = 50.0
+step = 1.0
+value = 15.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Interface/Avatar8BitFrame/HeroInfo/Hp"]
+layout_mode = 2
+offset_left = 1.25955
+offset_right = 775.26
+offset_bottom = 333.0
+scale = Vector2(0.0184041, 0.0173632)
+theme_override_fonts/font = ExtResource("4_okyme")
+theme_override_font_sizes/font_size = 300
+text = "HP: 15/50"
+
+[node name="Mp" type="ProgressBar" parent="Interface/Avatar8BitFrame/HeroInfo"]
+modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+max_value = 30.0
+step = 1.0
+value = 10.0
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="Interface/Avatar8BitFrame/HeroInfo/Mp"]
+layout_mode = 0
+offset_left = 1.25955
+offset_top = -0.00407839
+offset_right = 680.26
+offset_bottom = 449.996
+scale = Vector2(0.0187042, 0.017489)
+theme_override_fonts/font = ExtResource("4_okyme")
+theme_override_font_sizes/font_size = 300
+text = "MP: 1/30"
+
+[node name="textbox" type="Panel" parent="Interface"]
+self_modulate = Color(0.716296, 0.716296, 0.716296, 1)
+offset_top = 28.7252
+offset_right = 1338.0
+offset_bottom = 251.725
+scale = Vector2(0.0299283, 0.0520024)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_kfrup")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Interface/textbox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.5
+offset_top = -38.0
+offset_right = 301.5
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_okyme")
+theme_override_font_sizes/font_size = 64
+text = "Tekst Testowy GŁ"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Interface/textbox"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -76.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_okyme")
+theme_override_font_sizes/font_size = 55
+text = ">"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuestInfo" type="Label" parent="Interface"]
+modulate = Color(1, 0.911115, 0.213694, 1)
+offset_left = 4.32534
+offset_top = 13.9729
+offset_right = 1509.33
+offset_bottom = 235.973
+scale = Vector2(0.02, 0.02)
+theme_override_fonts/font = ExtResource("4_okyme")
+theme_override_font_sizes/font_size = 200
+text = "Coś zrobiłeś"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Interface"]
+libraries = {
+&"": SubResource("AnimationLibrary_0qong")
+}
+
+[node name="miecho" type="Sprite2D" parent="Interface"]
+texture_filter = 1
+position = Vector2(37.4668, 2.67211)
+scale = Vector2(0.153452, 0.175286)
+texture = ExtResource("6_okyme")
+
+[node name="klucz" type="Sprite2D" parent="Interface"]
+texture_filter = 1
+position = Vector2(37.1745, 2.05976)
+scale = Vector2(0.0848708, 0.1912)
+texture = ExtResource("5_k5ljv")
+
+[node name="klucz_boss" type="Sprite2D" parent="Interface"]
+texture_filter = 1
+position = Vector2(37.1678, 2.05976)
+scale = Vector2(0.0848522, 0.190865)
+texture = ExtResource("7_kfrup")
+
+[node name="Przejscie" type="Sprite2D" parent="Interface"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 0)
+position = Vector2(20.107, 20.2635)
+scale = Vector2(0.0223157, 0.0442971)
+texture = ExtResource("7_k5ljv")

@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvw2mb4v6510v"]
+
+[ext_resource type="Script" uid="uid://c41eyqncs76rb" path="res://Assety/3D_Data/scripts/return_to_menu.gd" id="1_18n5d"]
+[ext_resource type="PackedScene" uid="uid://tqp62dm7hlr7" path="res://3D/model/hero.glb" id="1_wcxvh"]
+[ext_resource type="Texture2D" uid="uid://b2wkdc3uc3lmd" path="res://gr/game_over.png" id="2_wcxvh"]
+[ext_resource type="PackedScene" uid="uid://pp3m6gjbrx5t" path="res://3D/model/legio2.glb" id="3_wcxvh"]
+[ext_resource type="AudioStream" uid="uid://di6bg41fuut0y" path="res://music/soundtrack/The_Old_Tower_Inn.mp3" id="4_o0j7i"]
+
+[sub_resource type="Environment" id="Environment_guu0x"]
+ambient_light_source = 1
+ambient_light_color = Color(0.568973, 0.568973, 0.568973, 1)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_foy7m"]
+
+[node name="ExplorationDemoEnd" type="CanvasLayer"]
+script = ExtResource("1_18n5d")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_guu0x")
+camera_attributes = SubResource("CameraAttributesPractical_foy7m")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18792, 0.566817, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84048, 0.572664, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 6.51214
+spot_angle = 32.8902
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.06846, 1.14533, 0)
+light_color = Color(1, 0, 0, 1)
+spot_range = 6.51214
+spot_angle = 32.8902
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Node3D"]
+transform = Transform3D(0.854912, 0, -0.518773, 0, 1, 0, 0.518773, 0, 0.854912, -0.230174, 1.14533, -3.94394)
+light_color = Color(1, 0, 0, 1)
+spot_range = 13.9595
+spot_angle = 32.8902
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Node3D"]
+transform = Transform3D(0.683796, 0, 0.729673, 0, 1, 0, -0.729673, 0, 0.683796, -0.0327156, 1.08405, -7.43508)
+light_color = Color(1, 0, 0, 1)
+spot_range = 13.9595
+spot_angle = 32.8902
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(11.2408, 0, 0, 0, 11.2408, 0, 0, 0, 11.2408, -0.00174856, 0, -17.1318)
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2_wcxvh")
+
+[node name="Label3D" type="Label3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.932967, 1.36641, -3.66657)
+text = "Jeśli chcesz ujrzeć więcej przygód Zbysława,
+musisz wykupić DLC \"Wielka Ucieczka\", oraz aby odblokować opcję walki musisz dokupić Seson Pass'a.
+Widzimy się w przyszłości drodzy fani Zbysia.
+
+
+\"Remember, Emperor protects.\"
+Nieznany student"
+
+[node name="legio2" parent="Node3D" instance=ExtResource("3_wcxvh")]
+transform = Transform3D(-0.802963, 0, -0.596029, 0, 1, 0, 0.596029, 0, -0.802963, -2.50603, -2.48245, -5.9483)
+
+[node name="legio2" parent="Node3D/legio2" instance=ExtResource("3_wcxvh")]
+transform = Transform3D(-0.802963, 0, -0.596029, 0, 1, 0, 0.596029, 0, -0.802963, -4.31499, 0.248188, -3.51128)
+
+[node name="legio3" parent="Node3D/legio2" instance=ExtResource("3_wcxvh")]
+transform = Transform3D(-0.802963, 0, -0.596029, 0, 1, 0, 0.596029, 0, -0.802963, -4.88988, 0.257066, -1.29104)
+
+[node name="legio4" parent="Node3D/legio2" instance=ExtResource("3_wcxvh")]
+transform = Transform3D(-0.802963, 0, -0.596029, 0, 1, 0, 0.596029, 0, -0.802963, -5.83505, 0.443238, 0.733052)
+
+[node name="legio5" parent="Node3D/legio2" instance=ExtResource("3_wcxvh")]
+transform = Transform3D(-0.802963, 0, -0.596029, 0, 1, 0, 0.596029, 0, -0.802963, -6.58886, 0.686822, 2.62297)
+
+[node name="legio6" parent="Node3D/legio2" instance=ExtResource("3_wcxvh")]
+transform = Transform3D(0.99929, 0, 0.0376728, 0, 1, 0, -0.0376728, 0, 0.99929, -5.09779, 0.248188, 5.94441)
+
+[node name="legio7" parent="Node3D/legio2" instance=ExtResource("3_wcxvh")]
+transform = Transform3D(0.99929, 0, 0.0376728, 0, 1, 0, -0.0376728, 0, 0.99929, -3.36836, 0.257066, 4.43807)
+
+[node name="legio8" parent="Node3D/legio2" instance=ExtResource("3_wcxvh")]
+transform = Transform3D(0.99929, 0, 0.0376728, 0, 1, 0, -0.0376728, 0, 0.99929, -1.44441, 0.443238, 3.30286)
+
+[node name="legio9" parent="Node3D/legio2" instance=ExtResource("3_wcxvh")]
+transform = Transform3D(0.99929, 0, 0.0376728, 0, 1, 0, -0.0376728, 0, 0.99929, 0.245838, 0.686822, 2.17014)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node3D"]
+stream = ExtResource("4_o0j7i")
+autoplay = true
+
+[node name="hero" parent="Node3D" instance=ExtResource("1_wcxvh")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 2.07502, -1, -3.88359)

@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://bp22ctgkmnf7e"]
+
+[ext_resource type="PackedScene" uid="uid://de8kx4feh4sga" path="res://Assety/scenes/exploration/level_testowy.tscn" id="2_37ox4"]
+[ext_resource type="PackedScene" uid="uid://dno84p2mrwqb2" path="res://Assety/3D_Data/models_data/hero.tscn" id="2_e0fxx"]
+[ext_resource type="PackedScene" uid="uid://ub1n7g3wcgan" path="res://Assety/3D/envairoment/barrel.glb" id="3_b4rl7"]
+[ext_resource type="PackedScene" uid="uid://bod31pcdxq6ng" path="res://Assety/3D/envairoment/brazzier.glb" id="4_1nfbr"]
+[ext_resource type="PackedScene" uid="uid://fxh181b4oodw" path="res://Assety/3D_Data/models_data/NPC.tscn" id="5_1nfbr"]
+[ext_resource type="PackedScene" uid="uid://dlxekeb1wfunc" path="res://Assety/3D_Data/models_data/Karczma_outside.tscn" id="6_8s050"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b4rl7"]
+size = Vector3(0.718506, 0.747192, 0.603638)
+
+[node name="MovementTest" type="Node3D"]
+
+[node name="Hero" parent="." instance=ExtResource("2_e0fxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40386, 3.25992, 10.6632)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.518266, 0.85522, 0, -0.85522, 0.518266, 0, 19.9804, 20.0794)
+light_color = Color(0.944867, 0.836327, 0.267683, 1)
+
+[node name="level_test" parent="." instance=ExtResource("2_37ox4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.18373, 0, 2.06178)
+
+[node name="barrel" parent="." instance=ExtResource("3_b4rl7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3295, 4.12902, -1.76487)
+
+[node name="brazzier" parent="." instance=ExtResource("4_1nfbr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.58669, 3.90562, 2.40774)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="brazzier"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0031569, 0.262989, -0.0431533)
+shape = SubResource("BoxShape3D_b4rl7")
+
+[node name="NPC" parent="." instance=ExtResource("5_1nfbr")]
+transform = Transform3D(-0.996008, 0, -0.0892593, 0, 1, 0, 0.0892593, 0, -0.996008, -3.82761, 0.536701, 2.83628)
+
+[node name="KarczmaOutside" parent="." instance=ExtResource("6_8s050")]
+transform = Transform3D(-1.61146e-07, 0, 3.68658, 0, 3.68658, 0, -3.68658, 0, -1.61146e-07, 26.7624, 6.14498, 12.6267)

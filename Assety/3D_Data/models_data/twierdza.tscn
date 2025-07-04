@@ -1,0 +1,125 @@
+[gd_scene load_steps=10 format=3 uid="uid://d13b0doekyle0"]
+
+[ext_resource type="PackedScene" uid="uid://dtctwyiys5ot0" path="res://3D/build/twierdza.glb" id="1_dr3eq"]
+[ext_resource type="Script" uid="uid://cw4ktc8gycy6i" path="res://Assety/3D_Data/scripts/gate_logic.gd" id="1_xeq40"]
+[ext_resource type="PackedScene" uid="uid://bmp3uuamy5bce" path="res://3D/build/brama.glb" id="2_mpylc"]
+[ext_resource type="PackedScene" uid="uid://pp3m6gjbrx5t" path="res://3D/model/legio2.glb" id="3_btnmp"]
+[ext_resource type="Script" uid="uid://yprn8xdieb2e" path="res://Assety/3D_Data/scripts/guard_rotate.gd" id="4_kf5bt"]
+
+[sub_resource type="Animation" id="Animation_kf5bt"]
+resource_name = "gate_down"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("brama:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("brama:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4.11909, 0.377295, -23.7319)]
+}
+
+[sub_resource type="Animation" id="Animation_xeq40"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("brama:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("brama:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4.11909, 0.377295, -23.7319)]
+}
+
+[sub_resource type="Animation" id="Animation_ctxkp"]
+resource_name = "gate_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("brama:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.139626, 0, 0), Vector3(1.74533, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("brama:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.327921, 0.6, 0.78, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-4.11909, 0.377295, -23.7319), Vector3(-4.11909, 0.330825, -24.6795), Vector3(-4.11909, 1.5837, -26.8411), Vector3(-4.11909, 3.61162, -28.8595), Vector3(-4.11909, 5.26164, -29.5782), Vector3(-4.11909, 7.27834, -29.7568)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xeq40"]
+_data = {
+&"RESET": SubResource("Animation_xeq40"),
+&"gate_down": SubResource("Animation_kf5bt"),
+&"gate_up": SubResource("Animation_ctxkp")
+}
+
+[node name="Twierdza" type="Node3D"]
+script = ExtResource("1_xeq40")
+
+[node name="twierdza" parent="." instance=ExtResource("1_dr3eq")]
+
+[node name="brama" parent="." instance=ExtResource("2_mpylc")]
+transform = Transform3D(1.05621, 0, 0, 0, 1.05621, 0, 0, 0, 1.05621, -4.11909, 0.377295, -23.7319)
+
+[node name="legio2" parent="." instance=ExtResource("3_btnmp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7815, 9.65161, -23.3836)
+script = ExtResource("4_kf5bt")
+
+[node name="legio3" parent="." instance=ExtResource("3_btnmp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1889, 9.70114, -23.4467)
+script = ExtResource("4_kf5bt")
+
+[node name="legio4" parent="." instance=ExtResource("3_btnmp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6779, 9.65161, 24.8689)
+script = ExtResource("4_kf5bt")
+
+[node name="legio5" parent="." instance=ExtResource("3_btnmp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8901, 9.65161, 25.0541)
+script = ExtResource("4_kf5bt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xeq40")
+}

@@ -1,0 +1,152 @@
+[gd_scene load_steps=24 format=3 uid="uid://bp22ctgkmnf7e"]
+
+[ext_resource type="PackedScene" uid="uid://de8kx4feh4sga" path="res://Assety/scenes/exploration/level_testowy.tscn" id="2_37ox4"]
+[ext_resource type="PackedScene" uid="uid://dno84p2mrwqb2" path="res://Assety/3D_Data/models_data/hero.tscn" id="2_e0fxx"]
+[ext_resource type="PackedScene" uid="uid://ub1n7g3wcgan" path="res://3D/envairoment/2/barrel.glb" id="3_b4rl7"]
+[ext_resource type="PackedScene" uid="uid://bod31pcdxq6ng" path="res://3D/envairoment/2/brazzier.glb" id="4_1nfbr"]
+[ext_resource type="PackedScene" uid="uid://fxh181b4oodw" path="res://Assety/3D_Data/models_data/NPC.tscn" id="5_1nfbr"]
+[ext_resource type="PackedScene" uid="uid://dlxekeb1wfunc" path="res://Assety/3D_Data/models_data/Karczma_outside.tscn" id="6_8s050"]
+[ext_resource type="Script" uid="uid://fn8piuqmlgmc" path="res://Assety/3D_Data/scripts/ToTheLine.gd" id="7_jft2p"]
+[ext_resource type="PackedScene" uid="uid://bup6aarwitrl6" path="res://Assety/3D_Data/models_data/kohorta.tscn" id="7_t1es8"]
+[ext_resource type="PackedScene" uid="uid://d13b0doekyle0" path="res://Assety/3D_Data/models_data/twierdza.tscn" id="9_1ec8c"]
+[ext_resource type="PackedScene" uid="uid://cnidaj1dj6i7t" path="res://3D/build/komin.glb" id="10_py4eg"]
+[ext_resource type="Texture2D" uid="uid://w12chvqmhj8v" path="res://gr/paving 2.png" id="11_wleqm"]
+[ext_resource type="PackedScene" uid="uid://y2sijukud14b" path="res://Assety/3D_Data/items/klucz.tscn" id="13_qkq3i"]
+[ext_resource type="PackedScene" uid="uid://batr4015jny4p" path="res://Assety/3D_Data/models_data/Wizzard.tscn" id="14_88f6h"]
+[ext_resource type="PackedScene" uid="uid://csqtywuikeqlg" path="res://3D/build/komin2.glb" id="15_a485w"]
+
+[sub_resource type="Environment" id="Environment_1ec8c"]
+ambient_light_color = Color(0.856067, 0.856067, 0.856067, 1)
+ssao_radius = 0.01
+ssao_intensity = 30.6
+ssao_power = 40.363
+ssil_radius = 11.58
+ssil_intensity = 0.0
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.03
+volumetric_fog_albedo = Color(1, 1, 0, 1)
+volumetric_fog_emission = Color(0.942823, 0.942823, 0.942823, 1)
+volumetric_fog_detail_spread = 6.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_py4eg"]
+
+[sub_resource type="Compositor" id="Compositor_wleqm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b4rl7"]
+size = Vector3(0.718506, 0.747192, 0.603638)
+
+[sub_resource type="Curve3D" id="Curve3D_qkq3i"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.99178, 0.819971, 2.84914, 0, 0, 0, 0, 0, 0, -2.72245, 0.819971, 6.28575, 0, 0, 0, 0, 0, 0, 8.79732, 0.819971, 7.21634, 0, 0, 0, 0, 0, 0, 24.3956, 0.819971, 0, 0, 0, 0, 0, 0, 0, 21.4523, 0.973716, -15.4948, 0, 0, 0, 0, 0, 0, 14.0478, 0.896143, -20.6191),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_8s050"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 89.4876, 0, -129.892, 0, 0, 0, 0, 0, 0, -45.5247, 0, -124.762, 0, 0, 0, 0, 0, 0, -41.693, 0, 0, 0, 0, 0, 0, 0, 0, 88.1656, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="BoxMesh" id="BoxMesh_paeih"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yyxyt"]
+albedo_texture = ExtResource("11_wleqm")
+
+[sub_resource type="BoxMesh" id="BoxMesh_py4eg"]
+
+[node name="MovementTest" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1ec8c")
+camera_attributes = SubResource("CameraAttributesPractical_py4eg")
+compositor = SubResource("Compositor_wleqm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.518266, 0.85522, 0, -0.85522, 0.518266, 28.6241, 42.7409, 20.0794)
+light_color = Color(0.944867, 0.836327, 0.267683, 1)
+shadow_enabled = true
+
+[node name="Hero" parent="." instance=ExtResource("2_e0fxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40386, 120.98, 10.6632)
+
+[node name="level_test" parent="." instance=ExtResource("2_37ox4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.18373, 0, 2.06178)
+
+[node name="barrel" parent="." instance=ExtResource("3_b4rl7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3295, 4.12902, -1.76487)
+
+[node name="brazzier" parent="." instance=ExtResource("4_1nfbr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.58669, 3.90562, 2.40774)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="brazzier"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0031569, 0.262989, -0.0431533)
+shape = SubResource("BoxShape3D_b4rl7")
+
+[node name="Path3D_npc" type="Path3D" parent="."]
+curve = SubResource("Curve3D_qkq3i")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D_npc"]
+transform = Transform3D(-0.834478, 0, -0.551039, 0, 0.999999, 0, 0.551039, 0, -0.834478, -4.99178, 0.819971, 2.84914)
+
+[node name="NPC" parent="Path3D_npc/PathFollow3D" instance=ExtResource("5_1nfbr")]
+transform = Transform3D(0.943246, 0, -0.332095, 0, 1, 0, 0.332095, 0, 0.943245, -3.82761, 0.186408, 2.83628)
+
+[node name="KarczmaOutside" parent="." instance=ExtResource("6_8s050")]
+transform = Transform3D(-1.61146e-07, 0, 3.68658, 0, 3.68658, 0, -3.68658, 0, -1.61146e-07, 26.7624, 6.14498, 12.6267)
+
+[node name="motto1" type="Label3D" parent="KarczmaOutside"]
+transform = Transform3D(-1.18569e-08, 0, -0.271254, 0, 0.271254, 0, 0.271254, 0, -1.18569e-08, -1.58514, -0.701765, -0.0100594)
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0.625575, 1.43189e-06, 5.77569e-07, 1)
+text = "it's not a bug it's a feature"
+font_size = 157
+
+[node name="motto2" type="Label3D" parent="KarczmaOutside"]
+transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, -4.76837e-07, 0, 1.57241)
+text = "It's just works"
+
+[node name="Path3D_legio" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02892, 0, 52.1891)
+curve = SubResource("Curve3D_8s050")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D_legio"]
+transform = Transform3D(-0.037969, 0, 0.999279, 0, 1, 0, -0.999279, 0, -0.037969, 89.0735, 0, -140.789)
+h_offset = 10.905
+script = ExtResource("7_jft2p")
+speed = 20.0
+
+[node name="Kohorta" parent="Path3D_legio/PathFollow3D" instance=ExtResource("7_t1es8")]
+transform = Transform3D(0.998727, 0, -0.0504536, 0, 1, 0, 0.0504536, 0, 0.998727, -10, 0, -0.302399)
+
+[node name="Twierdza" parent="." instance=ExtResource("9_1ec8c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.94037, 0.662598, 1.9938)
+
+[node name="komin" parent="." instance=ExtResource("10_py4eg")]
+transform = Transform3D(1.16134, 0, 0, 0, 1.16134, 0, 0, 0, 1.16134, 9.59633, -16.6596, -26.2432)
+
+[node name="Label3D" type="Label3D" parent="komin"]
+transform = Transform3D(1, 0, 0, 0, 0.35589, 0.934528, 0, -0.934528, 0.35589, 0, 15.0636, -3.64611)
+text = "To na pewno nie pułapka"
+font_size = 64
+
+[node name="dno" type="MeshInstance3D" parent="komin"]
+transform = Transform3D(8.04967, 0, 0, 0, 8.04967, 0, 0, 0, 8.04967, 0, -13.8633, 0)
+mesh = SubResource("BoxMesh_paeih")
+
+[node name="komin2" parent="komin" instance=ExtResource("15_a485w")]
+transform = Transform3D(1.566, 0, 0, 0, 1.161, 0, 0, 0, 1.161, 0.378935, -2.33012, 0.0395031)
+
+[node name="Wizzard" parent="komin" instance=ExtResource("14_88f6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17.9312, 2.07989)
+
+[node name="teren_bcg" type="MeshInstance3D" parent="."]
+transform = Transform3D(234.446, 0, 0, 0, 2.21405, 0, 0, 0, 234.446, 0, -2.6411, 0)
+material_override = SubResource("StandardMaterial3D_yyxyt")
+mesh = SubResource("BoxMesh_py4eg")
+
+[node name="Klucz" parent="." instance=ExtResource("13_qkq3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.6977, 0.963494, 10.9077)

@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://dympqgpy6abio"]
+
+[ext_resource type="PackedScene" uid="uid://bp22ctgkmnf7e" path="res://Assety/scenes/exploration/movement_test.tscn" id="1_2umje"]
+[ext_resource type="Script" uid="uid://7c61q5dlwdi1" path="res://Assety/script/exploration_dialog_missons.gd" id="1_mv8gp"]
+[ext_resource type="Texture2D" uid="uid://dm088h2nrhdhe" path="res://Assety/gr/inter/avatar_8bit_frame.png" id="2_e4gff"]
+[ext_resource type="FontFile" uid="uid://dawmbadlbv4dy" path="res://Assety/font/Silver.ttf" id="3_jpw62"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mv8gp"]
+bg_color = Color(0, 0, 0.956863, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(1, 0.739106, 0.506242, 1)
+border_blend = true
+shadow_offset = Vector2(10, 10)
+
+[node name="TestEsk" type="CanvasLayer"]
+script = ExtResource("1_mv8gp")
+
+[node name="MovementTest" parent="." instance=ExtResource("1_2umje")]
+
+[node name="Interface" type="Node2D" parent="."]
+scale = Vector2(34.217, 17.9633)
+
+[node name="Avatar8BitFrame" type="Sprite2D" parent="Interface"]
+position = Vector2(2.33802, 4.00817)
+scale = Vector2(0.004, 0.007)
+texture = ExtResource("2_e4gff")
+
+[node name="textbox" type="Panel" parent="Interface"]
+self_modulate = Color(0.716296, 0.716296, 0.716296, 1)
+offset_left = 0.233802
+offset_top = 25.8305
+offset_right = 1338.23
+offset_bottom = 248.83
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.0298955, 0.0643794)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_mv8gp")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Interface/textbox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.5
+offset_top = -38.0
+offset_right = 301.5
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_jpw62")
+theme_override_font_sizes/font_size = 64
+text = "Tekst Testowy"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Interface/textbox"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -76.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_jpw62")
+theme_override_font_sizes/font_size = 55
+text = ">"
+metadata/_edit_use_anchors_ = true

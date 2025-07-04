@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0ydwdqjm4asw"]
+
+[ext_resource type="PackedScene" uid="uid://pp3m6gjbrx5t" path="res://3D/model/legio2.glb" id="1_50qry"]
+[ext_resource type="Script" uid="uid://bma1jxx2aajfg" path="res://Assety/3D_Data/scripts/tw_to_kat.gd" id="2_8dqgw"]
+[ext_resource type="Texture2D" uid="uid://dxqm7gs43ickr" path="res://gr/inter/action.png" id="3_511vt"]
+[ext_resource type="Script" uid="uid://brjq67mownsy6" path="res://Assety/3D_Data/scripts/sprite_rotate.gd" id="4_ff0tr"]
+[ext_resource type="AudioStream" uid="uid://feiqasm57t03" path="res://sound_ef/Townsperson_See_002.wav" id="5_7re3y"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8dqgw"]
+
+[node name="Teleporter" type="CharacterBody3D"]
+script = ExtResource("2_8dqgw")
+
+[node name="legio2" parent="." instance=ExtResource("1_50qry")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0958918, 1.19209e-07, -0.0076983)
+script = ExtResource("2_8dqgw")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="legio2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.208871, 2.64471, -0.52847)
+light_color = Color(1, 0, 0, 1)
+spot_range = 1.75433
+spot_angle = 8.26872
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="legio2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19161, 2.64471, -0.52847)
+light_color = Color(1, 0, 0, 1)
+spot_range = 1.75433
+spot_angle = 8.26872
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.01992, 0, 0, 0, 2.22889, 0, 0, 0, 2.01992, 0, 1.86676, 0)
+shape = SubResource("CapsuleShape3D_8dqgw")
+
+[node name="Icon" type="Sprite3D" parent="."]
+transform = Transform3D(1.93114, 0, 0, 0, 1.93114, 0, 0, 0, 1.93114, 0, 5.11556, 0)
+texture_filter = 0
+texture = ExtResource("3_511vt")
+script = ExtResource("4_ff0tr")
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_7re3y")

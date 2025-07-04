@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://bk86l2ntmghk6"]
+
+[ext_resource type="PackedScene" uid="uid://bmp3uuamy5bce" path="res://3D/build/brama.glb" id="1_561u4"]
+[ext_resource type="Script" uid="uid://bjb3jeo7cjixb" path="res://Assety/3D_Data/scripts/gate_Boss_logic.gd" id="1_eoe4h"]
+[ext_resource type="AudioStream" uid="uid://be84l4e8l874r" path="res://sound_ef/Gate_Open_00.mp3" id="2_eoe4h"]
+[ext_resource type="Texture2D" uid="uid://dxqm7gs43ickr" path="res://gr/inter/action.png" id="3_qb4q6"]
+[ext_resource type="FontFile" uid="uid://dawmbadlbv4dy" path="res://font/Silver.ttf" id="4_ua5ao"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61i1c"]
+bg_color = Color(0, 0, 0.956863, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(1, 0.739106, 0.506242, 1)
+border_blend = true
+shadow_offset = Vector2(10, 10)
+
+[node name="BramaBoss" type="Node3D"]
+script = ExtResource("1_eoe4h")
+
+[node name="brama_Boss" parent="." instance=ExtResource("1_561u4")]
+transform = Transform3D(1.2, 0, 0, 0, 1.43, 0, 0, 0, 1, -4.18467, 0.311593, 0.0249557)
+
+[node name="Brama_op" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0.314031, 4.20564, -0.153916)
+stream = ExtResource("2_eoe4h")
+
+[node name="Icon" type="Sprite3D" parent="."]
+transform = Transform3D(3.99436, 0, 0, 0, 4.75994, 0, 0, 0, 3.32863, 0.24897, 4.35856, 0.215928)
+texture_filter = 0
+texture = ExtResource("3_qb4q6")
+
+[node name="textbox" type="Panel" parent="."]
+self_modulate = Color(0.716296, 0.716296, 0.716296, 1)
+offset_top = 512.0
+offset_right = 1338.0
+offset_bottom = 735.0
+scale = Vector2(1.02467, 0.943834)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_61i1c")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="textbox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.5
+offset_top = -38.0
+offset_right = 301.5
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_ua5ao")
+theme_override_font_sizes/font_size = 64
+text = "Tekst Testowy"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="textbox"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -76.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_ua5ao")
+theme_override_font_sizes/font_size = 55
+text = ">"
+metadata/_edit_use_anchors_ = true

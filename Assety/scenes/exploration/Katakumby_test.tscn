@@ -1,0 +1,455 @@
+[gd_scene load_steps=40 format=3 uid="uid://cy6p0qe66npbu"]
+
+[ext_resource type="Script" uid="uid://qdo7k571ryp0" path="res://script/katakumby_setup.gd" id="1_f3nfl"]
+[ext_resource type="PackedScene" uid="uid://dno84p2mrwqb2" path="res://Assety/3D_Data/models_data/hero.tscn" id="2_d1up7"]
+[ext_resource type="PackedScene" uid="uid://bnkknwq5jsp6a" path="res://3D/build/katakumby.glb" id="3_4q8w8"]
+[ext_resource type="PackedScene" uid="uid://rbmcidp7qubb" path="res://3D/envairoment/3/kostka.glb" id="3_f3nfl"]
+[ext_resource type="PackedScene" uid="uid://brvube381mk8u" path="res://Assety/3D_Data/models_data/Wizzard_Kat.tscn" id="3_pnake"]
+[ext_resource type="PackedScene" uid="uid://pp3m6gjbrx5t" path="res://3D/model/legio2.glb" id="4_pnake"]
+[ext_resource type="PackedScene" uid="uid://ub1n7g3wcgan" path="res://3D/envairoment/2/barrel.glb" id="5_5mk63"]
+[ext_resource type="PackedScene" uid="uid://6hvqana2kg6i" path="res://3D/envairoment/3/prog.glb" id="6_o8b5c"]
+[ext_resource type="PackedScene" uid="uid://bmp3uuamy5bce" path="res://3D/build/brama.glb" id="6_qyeii"]
+[ext_resource type="PackedScene" uid="uid://b42l3i1m3uafh" path="res://Assety/3D_Data/models_data/NPC_legio.tscn" id="7_61co5"]
+[ext_resource type="PackedScene" uid="uid://btoxamfn7xvpv" path="res://3D/build/tron.glb" id="8_d8mqd"]
+[ext_resource type="PackedScene" uid="uid://d1gyw2h4h88rp" path="res://Assety/3D_Data/models_data/czar.tscn" id="9_k50tb"]
+[ext_resource type="PackedScene" uid="uid://dex0feygxn22v" path="res://Assety/3D_Data/models_data/MeatMan.tscn" id="10_0go63"]
+[ext_resource type="AudioStream" uid="uid://be84l4e8l874r" path="res://sound_ef/Gate_Open_00.mp3" id="11_407nr"]
+[ext_resource type="Script" uid="uid://c6eqs0qkhbk6h" path="res://Assety/3D_Data/scripts/B_Key.gd" id="11_y87p6"]
+[ext_resource type="PackedScene" uid="uid://uyrd5cd2xbk5" path="res://Assety/3D_Data/models_data/skrzynia_A.tscn" id="13_yelqv"]
+[ext_resource type="PackedScene" uid="uid://dbithn12581p7" path="res://3D/envairoment/1/taboret.glb" id="14_h2qe3"]
+[ext_resource type="PackedScene" uid="uid://ecr8lesbnqhi" path="res://3D/envairoment/1/stol.glb" id="15_1mhix"]
+[ext_resource type="PackedScene" uid="uid://bro5ljy6hferw" path="res://3D/envairoment/1/gitara.glb" id="16_1mhix"]
+[ext_resource type="Script" uid="uid://cevmi1vqtonyv" path="res://Assety/3D_Data/scripts/B_MM.gd" id="17_a5d37"]
+[ext_resource type="PackedScene" uid="uid://ktvv5sohiabs" path="res://Assety/3D_Data/models_data/skrzynia_B.tscn" id="17_ibqtg"]
+[ext_resource type="PackedScene" uid="uid://bk86l2ntmghk6" path="res://Assety/3D_Data/models_data/brama_Boss.tscn" id="18_o6hlf"]
+[ext_resource type="AudioStream" uid="uid://suct2abmss5l" path="res://music/soundtrack/Temple of the Mystics.mp3" id="23_hcqvl"]
+[ext_resource type="AudioStream" uid="uid://db2mmwfgqk5cb" path="res://music/soundtrack/We are so close.mp3" id="24_hcqvl"]
+
+[sub_resource type="Environment" id="Environment_xhgeb"]
+background_mode = 1
+ambient_light_color = Color(0.856067, 0.856067, 0.856067, 1)
+tonemap_mode = 1
+ssao_radius = 0.01
+ssao_intensity = 30.6
+ssao_power = 40.363
+ssil_radius = 11.58
+ssil_intensity = 0.0
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.03
+volumetric_fog_albedo = Color(0.980663, 0.947851, 0.965051, 1)
+volumetric_fog_emission = Color(0.942823, 0.942823, 0.942823, 1)
+volumetric_fog_detail_spread = 6.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_d1up7"]
+
+[sub_resource type="Compositor" id="Compositor_4q8w8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1kn6p"]
+height = 1.08301
+radius = 1.7666
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1kn6p"]
+size = Vector3(1, 1.49786, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d1up7"]
+size = Vector3(1, 14.9244, 8.77768)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4q8w8"]
+size = Vector3(275.945, 1.14343, 380.833)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d8mqd"]
+size = Vector3(1, 1.98547, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1mhix"]
+height = 11.5198
+
+[sub_resource type="Curve3D" id="Curve3D_61co5"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 21.0631, 0, 2.95997, 0, 0, 0, 0, 0, 0, 23.3633, 0, 5.86042, 0, 0, 0, 0, 0, 0, 36.5445, 0, 8.04221, 0, 0, 0, 0, 0, 0, 49.6571, 0, 4.67411, 0, 0, 0, 0, 0, 0, 57.2884, 0, 0, 0, 0, 0, 0, 0, 0, 51.9779, 0, 11.2661, 0, 0, 0, 0, 0, 0, 33.2022, 0, 11.3181, 0, 0, 0, 0, 0, 0, 0.00512505, 0, 12.0068),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Animation" id="Animation_jmimh"]
+resource_name = "B_B_MV"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BramaBoss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-12.1092, 0, -22.9085), Vector3(-22.3701, 0, -22.9085)]
+}
+
+[sub_resource type="Animation" id="Animation_y87p6"]
+resource_name = "B_Key_MV"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("brama_Key:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(21.4949, 1, 41.8853), Vector3(21.4949, 1, 31.0541)]
+}
+
+[sub_resource type="Animation" id="Animation_407nr"]
+resource_name = "B_MM_MV"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("brama_MM:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-41, 1, 41.8853), Vector3(-41, 1, 52.1683)]
+}
+
+[sub_resource type="Animation" id="Animation_yelqv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("brama_Key:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(21.4949, 1, 41.8853)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("brama_MM:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-41, 1, 41.8853)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BramaBoss:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-12.1092, 0, -22.9085)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jmimh"]
+_data = {
+&"B_B_MV": SubResource("Animation_jmimh"),
+&"B_Key_MV": SubResource("Animation_y87p6"),
+&"B_MM_MV": SubResource("Animation_407nr"),
+&"RESET": SubResource("Animation_yelqv")
+}
+
+[node name="KatakumbyTest" type="Node3D"]
+script = ExtResource("1_f3nfl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.518266, 0.85522, 0, -0.85522, 0.518266, -11.4656, 14.1658, 20.0794)
+light_color = Color(0.199773, 0.0904169, 0.0730719, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xhgeb")
+camera_attributes = SubResource("CameraAttributesPractical_d1up7")
+compositor = SubResource("Compositor_4q8w8")
+
+[node name="katakumby" parent="." instance=ExtResource("3_4q8w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1007, 0, -36.9763)
+
+[node name="light" type="Node3D" parent="katakumby"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1007, 0, 36.9763)
+
+[node name="L1" type="SpotLight3D" parent="katakumby/light"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10, 28, 70.9774)
+light_energy = 16.0
+spot_range = 32.0
+
+[node name="L2" type="SpotLight3D" parent="katakumby/light"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10, 28, 49.9774)
+light_energy = 16.0
+spot_range = 32.0
+
+[node name="L3" type="SpotLight3D" parent="katakumby/light"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10, 28, 38.9774)
+light_energy = 16.0
+spot_range = 96.218
+
+[node name="OmniLight3D" type="OmniLight3D" parent="katakumby/light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2787, 13.5438, -21.2396)
+light_color = Color(1, 0, 0, 1)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="katakumby/light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1315, 13.5438, -21.2396)
+light_color = Color(1, 0, 0, 1)
+
+[node name="kostka" parent="katakumby" instance=ExtResource("3_f3nfl")]
+transform = Transform3D(8.28215, 0, 0, 0, 17.5165, 0, 0, 0, 33.5479, 156.722, 1.36091, 72.0513)
+
+[node name="kat" type="StaticBody3D" parent="katakumby"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1007, 0, 36.9763)
+
+[node name="O3" type="Node3D" parent="katakumby/kat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.041, 0, 13.1181)
+
+[node name="stol3" parent="katakumby/kat/O3" instance=ExtResource("15_1mhix")]
+transform = Transform3D(-1.00369, 0, -3.14366, 0, 3.3, 0, 3.14366, 0, -1.00369, 106.52, 3.49799, 25.4713)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="katakumby/kat/O3/stol3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.458496, 0)
+shape = SubResource("CylinderShape3D_1kn6p")
+
+[node name="taboret13" parent="katakumby/kat/O3" instance=ExtResource("14_h2qe3")]
+transform = Transform3D(-0.304149, 0, -0.952624, 0, 1, 0, 0.952624, 0, -0.304149, 114.141, 1.49799, 27.9045)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="katakumby/kat/O3/taboret13"]
+transform = Transform3D(2.47213, 0, 0, 0, 2.47213, 0, 0, 0, 2.47213, 0, -0.163711, 0)
+shape = SubResource("BoxShape3D_1kn6p")
+
+[node name="taboret14" parent="katakumby/kat/O3" instance=ExtResource("14_h2qe3")]
+transform = Transform3D(-0.304149, 0, -0.952624, 0, 1, 0, 0.952624, 0, -0.304149, 98.8988, 1.49799, 23.0381)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="katakumby/kat/O3/taboret14"]
+transform = Transform3D(2.47213, 0, 0, 0, 2.47213, 0, 0, 0, 2.47213, 0, -0.163711, 0)
+shape = SubResource("BoxShape3D_1kn6p")
+
+[node name="taboret15" parent="katakumby/kat/O3" instance=ExtResource("14_h2qe3")]
+transform = Transform3D(-0.304149, 0, -0.952624, 0, 1, 0, 0.952624, 0, -0.304149, 98.9791, 1.49799, 29.3621)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="katakumby/kat/O3/taboret15"]
+transform = Transform3D(2.47213, 0, 0, 0, 2.47213, 0, 0, 0, 2.47213, 0, -0.163711, 0)
+shape = SubResource("BoxShape3D_1kn6p")
+
+[node name="taboret16" parent="katakumby/kat/O3" instance=ExtResource("14_h2qe3")]
+transform = Transform3D(-0.304149, 0, -0.952624, 0, 1, 0, 0.952624, 0, -0.304149, 114.142, 1.49799, 21.8846)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="katakumby/kat/O3/taboret16"]
+transform = Transform3D(2.47213, 0, 0, 0, 2.47213, 0, 0, 0, 2.47213, 0, -0.163711, 0)
+shape = SubResource("BoxShape3D_1kn6p")
+
+[node name="taboret17" parent="katakumby/kat/O3" instance=ExtResource("14_h2qe3")]
+transform = Transform3D(-0.304149, 0, -0.952624, 0, 1, 0, 0.952624, 0, -0.304149, 104.534, 1.49799, 18.5389)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="katakumby/kat/O3/taboret17"]
+transform = Transform3D(2.47213, 0, 0, 0, 2.47213, 0, 0, 0, 2.47213, 0, -0.163711, 0)
+shape = SubResource("BoxShape3D_1kn6p")
+
+[node name="taboret18" parent="katakumby/kat/O3" instance=ExtResource("14_h2qe3")]
+transform = Transform3D(-0.304149, 0, -0.952624, 0, 1, 0, 0.952624, 0, -0.304149, 110.106, 1.49799, 33.9646)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="katakumby/kat/O3/taboret18"]
+transform = Transform3D(2.47213, 0, 0, 0, 2.47213, 0, 0, 0, 2.47213, 0, -0.163711, 0)
+shape = SubResource("BoxShape3D_1kn6p")
+
+[node name="gitara3" parent="katakumby/kat/O3" instance=ExtResource("16_1mhix")]
+transform = Transform3D(0.0151386, 0.303773, -0.952624, 0.998761, -0.0497737, 0, -0.0474156, -0.951444, -0.304149, 106.52, 3.98048, 25.4713)
+
+[node name="Stoly_ruch" type="Node3D" parent="katakumby/kat"]
+
+[node name="st1" parent="katakumby/kat/Stoly_ruch" instance=ExtResource("15_1mhix")]
+transform = Transform3D(-1.00369, 0, -3.14366, 0, 3.3, 0, 3.14366, 0, -1.00369, 87.8101, 5.75418, 40.1846)
+
+[node name="st2" parent="katakumby/kat/Stoly_ruch" instance=ExtResource("15_1mhix")]
+transform = Transform3D(-1.00369, 0, -3.14366, 0, 3.3, 0, 3.14366, 0, -1.00369, 99.5176, 7.53559, 37.5019)
+
+[node name="st3" parent="katakumby/kat/Stoly_ruch" instance=ExtResource("15_1mhix")]
+transform = Transform3D(-1.00369, 0, -3.14366, 0, 3.3, 0, 3.14366, 0, -1.00369, 108.689, 9.38794, 42.1818)
+
+[node name="st4" parent="katakumby/kat/Stoly_ruch" instance=ExtResource("15_1mhix")]
+transform = Transform3D(-1.00369, 0, -3.14366, 0, 3.3, 0, 3.14366, 0, -1.00369, 115.502, 11.3155, 34.0929)
+
+[node name="st5" parent="katakumby/kat/Stoly_ruch" instance=ExtResource("15_1mhix")]
+transform = Transform3D(-1.00369, 0, -3.14366, 0, 3.3, 0, 3.14366, 0, -1.00369, 124.371, 13.9119, 40.8185)
+
+[node name="st6" parent="katakumby/kat/Stoly_ruch" instance=ExtResource("15_1mhix")]
+transform = Transform3D(-1.00369, 0, -3.14366, 0, 3.3, 0, 3.14366, 0, -1.00369, 130.057, 16.3165, 42.7971)
+
+[node name="col" type="Node3D" parent="katakumby"]
+
+[node name="col1" type="CollisionShape3D" parent="katakumby/col"]
+transform = Transform3D(1, 0, 0, 0, 2.04595, 0, 0, 0, 8.31733, 4.39791, 5.51797, -214.182)
+shape = SubResource("BoxShape3D_d1up7")
+
+[node name="col2" type="CollisionShape3D" parent="katakumby/col"]
+transform = Transform3D(1, 0, 0, 0, 2.04595, 0, 0, 0, 8.31733, -4.47036, 5.51797, -214.182)
+shape = SubResource("BoxShape3D_d1up7")
+
+[node name="col3" type="CollisionShape3D" parent="katakumby/col"]
+transform = Transform3D(1, 0, 0, 0, 2.04595, 0, 0, 0, 8.31733, 5.28361, 14.2443, -281.207)
+shape = SubResource("BoxShape3D_d1up7")
+
+[node name="col4" type="CollisionShape3D" parent="katakumby/col"]
+transform = Transform3D(1, 0, 0, 0, 2.04595, 0, 0, 0, 8.31733, -4.47036, 13.7072, -282.266)
+shape = SubResource("BoxShape3D_d1up7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="katakumby/col"]
+transform = Transform3D(0.999998, 0.00198967, 0, -0.00198967, 0.999998, 0, 0, 0, 1, -41.9737, 0.0851059, 74.3275)
+shape = SubResource("BoxShape3D_4q8w8")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="katakumby/col"]
+transform = Transform3D(0.99664, 0.00590377, 0, -0.00198299, 2.9672, 0, 0, 0, 0.999537, 27.4227, 0.110713, -59.9187)
+shape = SubResource("BoxShape3D_4q8w8")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="katakumby/col"]
+transform = Transform3D(21.2138, 0, 0, 0, 8.6925, 0, 0, 0, 1, 0, 20.6615, -316.785)
+shape = SubResource("BoxShape3D_d8mqd")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="katakumby/col"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 60.5521, 0.282777, 74.2341)
+shape = SubResource("CapsuleShape3D_1mhix")
+disabled = true
+
+[node name="prog" parent="katakumby/col" instance=ExtResource("6_o8b5c")]
+transform = Transform3D(3.42154, 0, 0, 0, 2.70041, 0, 0, 0, 3.57433, 60.57, 0.719038, 74.2437)
+
+[node name="prog2" parent="katakumby/col" instance=ExtResource("6_o8b5c")]
+transform = Transform3D(3.30564, 0, 0, 0, 1.39866, 0, 0, 0, 3.28535, 33.5752, 0.549609, 74.4823)
+
+[node name="prog3" parent="katakumby/col" instance=ExtResource("6_o8b5c")]
+transform = Transform3D(3.12393, 0, 0, 0, 1.17745, 0, 0, 0, 2.96359, -28.6624, 0.412885, 74.6127)
+
+[node name="prog4" parent="katakumby/col" instance=ExtResource("6_o8b5c")]
+transform = Transform3D(2.33996, 0, 0, 0, 1, 0, 0, 0, 2.98547, -55.638, 0.741063, 74.8229)
+
+[node name="Zgr" type="StaticBody3D" parent="."]
+
+[node name="becz" parent="Zgr" instance=ExtResource("5_5mk63")]
+transform = Transform3D(3.33419, 0, 0, 0, 3.33419, 0, 0, 0, 3.33419, -15.5301, 0.269332, 27.8136)
+
+[node name="legio2" parent="Zgr" instance=ExtResource("4_pnake")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6353, 0.175693, 30.4503)
+
+[node name="legio3" parent="Zgr" instance=ExtResource("4_pnake")]
+transform = Transform3D(-0.494412, 0, -0.869228, 0, 1, 0, 0.869228, 0, -0.494412, -17.7507, 0.450333, 26.4584)
+
+[node name="legio4" parent="Zgr" instance=ExtResource("4_pnake")]
+transform = Transform3D(0.348327, 0, 0.937373, 0, 1, 0, -0.937373, 0, 0.348327, -13.18, 0.450334, 29.3357)
+
+[node name="legio5" parent="Zgr" instance=ExtResource("4_pnake")]
+transform = Transform3D(0.474242, 0, -0.880395, 0, 1, 0, 0.880395, 0, 0.474242, -18.0082, 0.450334, 28.8317)
+
+[node name="legio6" parent="Zgr" instance=ExtResource("4_pnake")]
+transform = Transform3D(-0.986649, 0, 0.162861, 0, 1, 0, -0.162861, 0, -0.986649, -15.0285, 0.311575, 25.2301)
+
+[node name="legio7" parent="Zgr" instance=ExtResource("4_pnake")]
+transform = Transform3D(-0.687189, 0, 0.726479, 0, 1, 0, -0.726479, 0, -0.687189, -12.9978, 0.450334, 26.5263)
+
+[node name="brama" parent="Zgr" instance=ExtResource("6_qyeii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2316, 0.0940015, 32.0811)
+
+[node name="brama2" parent="Zgr" instance=ExtResource("6_qyeii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9842, 0.106836, 23.5915)
+
+[node name="brama3" parent="Zgr" instance=ExtResource("6_qyeii")]
+transform = Transform3D(-0.0268226, 0, 0.99964, 0, 1, 0, -0.99964, 0, -0.0268226, -19.7889, 0.105206, 31.2447)
+
+[node name="brama4" parent="Zgr" instance=ExtResource("6_qyeii")]
+transform = Transform3D(-0.00504395, 0, -0.999987, 0, 1, 0, 0.999987, 0, -0.00504395, -11.4344, 0.160528, 24.2009)
+
+[node name="Hero" parent="." instance=ExtResource("2_d1up7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7983, -1.41516, 84.5457)
+
+[node name="droga" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.4481, 0.343823, 32.489)
+curve = SubResource("Curve3D_61co5")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="droga"]
+transform = Transform3D(0.522302, 0, -0.85275, 0, 1, 0, 0.85275, 0, 0.522302, 56.593, 0, 0.42592)
+progress = 38.7342
+
+[node name="NPC_legio" parent="droga/PathFollow3D" instance=ExtResource("7_61co5")]
+transform = Transform3D(0.999994, 0, -0.00438204, 0, 1, 0, 0.00438204, 0, 0.999994, 0.820431, 0.197502, 0.293165)
+
+[node name="tron" parent="." instance=ExtResource("8_d8mqd")]
+transform = Transform3D(2.90159, 0, 0, 0, 2.90159, 0, 0, 0, 2.90159, -11.9292, 15.9302, -342.412)
+
+[node name="Wizzard" parent="." instance=ExtResource("3_pnake")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7741, 0.450335, 94.0884)
+
+[node name="Czar" parent="." instance=ExtResource("9_k50tb")]
+transform = Transform3D(1.34067, 0, 0, 0, 1.34067, 0, 0, 0, 1.34067, -11.8264, 15.4545, -342.648)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Czar"]
+transform = Transform3D(0.745898, 0, 0, 0, -0.745686, 0.0177815, 0, -0.0177815, -0.745686, 0, 7.05994, -1.66901)
+light_color = Color(1, 1, 0.376471, 1)
+light_energy = 16.0
+spot_range = 7.22194
+
+[node name="MeatMan" parent="." instance=ExtResource("10_0go63")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.0567, 1.00444, 39.385)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MeatMan"]
+transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 2, 11.7464, -0.445374)
+light_color = Color(1, 0, 0, 1)
+light_energy = 16.0
+spot_range = 16.0
+spot_angle = 28.5921
+
+[node name="brama_Key" parent="." instance=ExtResource("6_qyeii")]
+transform = Transform3D(-5.24537e-08, 0, 1, 0, 1.43, 0, -1.2, 0, -4.37114e-08, 21.4949, 1, 41.8853)
+script = ExtResource("11_y87p6")
+
+[node name="Brama_op" type="AudioStreamPlayer3D" parent="brama_Key"]
+transform = Transform3D(0.833333, 0, -3.55271e-15, 0, 0.699301, 0, 7.10543e-15, 0, 1, 3.74892, 2.72311, 0)
+stream = ExtResource("11_407nr")
+
+[node name="brama_MM" parent="." instance=ExtResource("6_qyeii")]
+transform = Transform3D(-5.24537e-08, 0, 1, 0, 1.43, 0, -1.2, 0, -4.37114e-08, -41, 1, 41.8853)
+script = ExtResource("17_a5d37")
+
+[node name="Brama_op" type="AudioStreamPlayer3D" parent="brama_MM"]
+transform = Transform3D(0.833333, 0, -3.55271e-15, 0, 0.699301, 0, 7.10543e-15, 0, 1, 3.74892, 2.72311, 0)
+stream = ExtResource("11_407nr")
+
+[node name="BramaBoss" parent="." instance=ExtResource("18_o6hlf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1092, 0, -22.9085)
+
+[node name="SkrzyniaA" parent="." instance=ExtResource("13_yelqv")]
+transform = Transform3D(0.417011, 0, 0.908902, 0, 1, 0, -0.908902, 0, 0.417011, 144.544, 18.9408, 10.3829)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SkrzyniaA"]
+transform = Transform3D(0.904936, -0.417011, 0.0848087, -0.093309, -3.72168e-08, 0.995637, -0.415191, -0.908902, -0.0389109, 0.417011, 7, 0.908905)
+light_energy = 16.0
+spot_range = 10.0
+
+[node name="SkrzyniaB" parent="." instance=ExtResource("17_ibqtg")]
+transform = Transform3D(0.708364, 0, -0.705847, 0, 1, 0, 0.705847, 0, 0.708364, 146.218, 18.9408, 57.6912)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SkrzyniaB"]
+transform = Transform3D(0.904936, -0.417011, 0.0848087, -0.093309, -3.72168e-08, 0.995637, -0.415191, -0.908902, -0.0389109, 0.417011, 7, 0.908905)
+light_energy = 16.0
+spot_range = 10.0
+
+[node name="Animacje" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jmimh")
+}
+
+[node name="Ambient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_hcqvl")
+
+[node name="Ambient2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_hcqvl")

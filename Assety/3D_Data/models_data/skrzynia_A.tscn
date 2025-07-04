@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://uyrd5cd2xbk5"]
+
+[ext_resource type="Script" uid="uid://6mo5rgn3xud6" path="res://Assety/3D_Data/scripts/skrzynia_A.gd" id="1_00seh"]
+[ext_resource type="PackedScene" uid="uid://w7aabq65eckg" path="res://3D/envairoment/3/skrzynia.glb" id="2_0h1ir"]
+[ext_resource type="Texture2D" uid="uid://dxqm7gs43ickr" path="res://gr/inter/action.png" id="3_hyswt"]
+[ext_resource type="Script" uid="uid://brjq67mownsy6" path="res://Assety/3D_Data/scripts/sprite_rotate.gd" id="4_4b4f0"]
+[ext_resource type="AudioStream" uid="uid://7myu0b5ovy5t" path="res://sound_ef/door.wav" id="5_eylrt"]
+[ext_resource type="AudioStream" uid="uid://bfw50h8agiaub" path="res://sound_ef/coin3.wav" id="6_xldd4"]
+[ext_resource type="FontFile" uid="uid://dawmbadlbv4dy" path="res://font/Silver.ttf" id="7_hpwny"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yofh0"]
+bg_color = Color(0, 0, 0.956863, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(1, 0.739106, 0.506242, 1)
+border_blend = true
+shadow_offset = Vector2(10, 10)
+
+[node name="SkrzyniaA" type="Node3D"]
+script = ExtResource("1_00seh")
+
+[node name="skrzynia" parent="." instance=ExtResource("2_0h1ir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0138978, -0.230904, 0.00432229)
+
+[node name="Icon" type="Sprite3D" parent="."]
+transform = Transform3D(3.32863, 0, 0, 0, 3.32863, 0, 0, 0, 3.32863, 0, 3.95971, 0.00665081)
+texture_filter = 0
+texture = ExtResource("3_hyswt")
+script = ExtResource("4_4b4f0")
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34809, -0.402345)
+stream = ExtResource("5_eylrt")
+
+[node name="Sound2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_xldd4")
+
+[node name="textbox" type="Panel" parent="."]
+self_modulate = Color(0.716296, 0.716296, 0.716296, 1)
+offset_top = 512.0
+offset_right = 1338.0
+offset_bottom = 735.0
+scale = Vector2(1.02467, 0.943834)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_yofh0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="textbox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.5
+offset_top = -38.0
+offset_right = 301.5
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_hpwny")
+theme_override_font_sizes/font_size = 64
+text = "Tekst Testowy"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="textbox"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -76.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_hpwny")
+theme_override_font_sizes/font_size = 55
+text = ">"
+metadata/_edit_use_anchors_ = true

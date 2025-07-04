@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf21i0l8a80g8"]
+
+[ext_resource type="PackedScene" uid="uid://b2n8egg4ij53t" path="res://3D/model/szkieletor2.glb" id="1_7asla"]
+
+[node name="szkieletor2" instance=ExtResource("1_7asla")]
